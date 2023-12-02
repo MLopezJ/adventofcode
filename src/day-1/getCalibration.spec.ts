@@ -15,6 +15,6 @@ void describe('getCalibration', () => {
 })
 
 /**
- * WIP
+ * WIP: Combine the first digit and the last digit (in that order) from input to form a single two-digit number.
  */
 const getCalibration = (token: string) => token
