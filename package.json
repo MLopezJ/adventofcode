@@ -1,0 +1,89 @@
+{
+  "name": "adventofcode",
+  "version": "0.0.0-development",
+  "description": "following https://adventofcode.com/2023",
+  "type": "module",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./export.js",
+      "node": "./export.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MLopezJ/adventofcode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MLopezJ/adventofcode/issues"
+  },
+  "homepage": "https://github.com/MLopezJ/adventofcode#readme",
+  "keywords": [],
+  "author": "Mauro Lopez",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "test": "find ./ -type f -name \\*.spec.ts -not -path './node_modules/*' | xargs npx tsx --test --test-reporter spec"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "18.4.3",
+    "@typescript-eslint/eslint-plugin": "6.13.1",
+    "eslint": "8.55.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-import": "2.29.0",
+    "husky": "8.0.3",
+    "lint-staged": "15.1.0",
+    "prettier": "3.1.0",
+    "prettier-plugin-organize-imports": "3.2.4",
+    "tsx": "4.6.1",
+    "typescript": "5.3.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --ext .js,.ts,.jsx,.tsx"
+    ],
+    "*.{md,json,yaml,yml,html}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": "@nordicsemiconductor/asset-tracker-cloud-code-style/.prettierrc",
+  "release": {
+    "branches": [
+      "saga",
+      {
+        "name": "!(saga|v[0-9].[0-9].x|*_*|*/*)",
+        "prerelease": true
+      }
+    ],
+    "remoteTags": true,
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false,
+          "failTitle": false
+        }
+      ]
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "package-lock.json",
+    "LICENSE",
+    "README.md",
+    "dist",
+    "export.js",
+    "index.d.ts"
+  ],
+  "dependencies": {}
+}
