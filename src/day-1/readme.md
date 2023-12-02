@@ -16,4 +16,4 @@ treb7uchet
 
 In this example, the calibration values of these four lines are `12`, `38`, `15`, and `77`. Adding these together produces `142`.
 
-Consider your entire [calibration document](./calibration.txt). What is the sum of all of the calibration values?
+Consider your entire [calibration document](./calibrationDocument.txt). What is the sum of all of the calibration values?
