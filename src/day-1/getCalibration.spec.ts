@@ -18,7 +18,3 @@ void describe('getCalibration', () => {
  * WIP
  */
 const getCalibration = (token: string) => token
-
-
-
-
