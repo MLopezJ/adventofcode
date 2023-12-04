@@ -1,26 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-
-type Game = {
-	id: number
-	rounds: Round[]
-}
-
-type Round = {
-	red: number
-	green: number
-	blue: number
-}
-
-/**
- * Maximum number of cubes by color:
- *  Red = 12
- *  Green = 14
- *  Blue = 14
- */
-const maxRed = 12
-const maxGreen = 13
-const maxBlue = 14
+import { isGamePossible, type Game } from './isGamePossible.js'
 
 void describe('isGamePossible', () => {
 	for (const [game, expected] of [
@@ -86,5 +66,3 @@ void describe('isGamePossible', () => {
 		})
 	}
 })
-
-const isGamePossible = (game: Game) => false
