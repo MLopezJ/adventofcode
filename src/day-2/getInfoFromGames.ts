@@ -10,8 +10,12 @@ export const getInfoFromGames = (gamesList: Game[]) => {
 		.filter((game) => isGamePossible(game))
 		.map((game) => game.id)
 
+	const sumOfIds = validGames.reduce((previous, current) => {
+		return previous + current
+	}, 0)
+
 	return {
 		validGames,
-		sumOfIds: 8,
+		sumOfIds,
 	}
 }
