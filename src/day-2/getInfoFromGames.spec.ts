@@ -52,7 +52,9 @@ void describe('getInfoFromGames', () => {
 })
 
 /**
- * Get list of valid games (ids) and the sum of those ids 
+ * info:
+ * 	1- list of valid games (ids)
+ * 	2- the sum of those ids 
  */
 const getInfoFromGames = (gamesList: Game[]) => ({
 	validGames: [1, 2, 50],
