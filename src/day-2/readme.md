@@ -26,3 +26,9 @@ In the example above, games 1, 2, and 5 would have been possible if the bag had 
 With the entire [games logs](gamesLogs.txt), Determine:
 1. which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. 
 2. What is the sum of the IDs of those games?
+
+## Solution
+
+id of valid games: `4,5,7,8,9,10,12,14,17,19,20,21,22,23,25,28,29,30,31,32,33,34,38,40,43,46,48,49,50,54,55,56,58,61,62,63,65,67,69,71,72,74,77,78,80,83,84,87,88,89,92,93,95`
+
+sum of valid ids: `2520`
