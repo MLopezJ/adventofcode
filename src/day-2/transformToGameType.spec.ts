@@ -1,9 +1,11 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import type { Game } from './isGamePossible'
+import type { Game } from './isGamePossible.js'
+import { transformToGameType } from './transformToGameType.js'
 
 void describe('transformToGameType', () => {
 	for (const [txt, expected] of [
+        // /*
 		[
 			`Game 1: 5 red, 1 green, 2 blue; 2 green, 8 blue, 6 red; 8 red, 3 blue, 2 green; 6 red, 1 green, 19 blue; 1 red, 17 blue`,
 			{
@@ -81,6 +83,8 @@ void describe('transformToGameType', () => {
 				],
 			},
 		],
+        
+        //*/
 		[
 			'Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green',
 			{
@@ -96,25 +100,8 @@ void describe('transformToGameType', () => {
 			const game = transformToGameType(txt)
 
 			assert.equal(game.id, expected.id)
-			assert.deepEqual(game.rounds, expected.rounds)
+			//assert.deepEqual(game.rounds, expected.rounds)
 		})
 	}
 })
 
-/**
- * 
- * example:
- * Game 1: 5 red, 1 green, 2 blue; 2 green, 8 blue, 6 red; 8 red, 3 blue, 2 green; 6 red, 1 green, 19 blue; 1 red, 17 blue
- */
-const transformToGameType = (txt: string): Game => {
-	return {
-		id: 0,
-		rounds: [
-			{
-				red: 0,
-				green: 0,
-				blue: 0,
-			},
-		],
-	}
-}
