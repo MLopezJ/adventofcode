@@ -3,7 +3,7 @@ export type Game = {
 	rounds: Round[]
 }
 
-type Round = {
+export type Round = {
 	red: number
 	green: number
 	blue: number

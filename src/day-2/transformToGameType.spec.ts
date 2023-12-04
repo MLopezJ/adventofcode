@@ -5,7 +5,7 @@ import { transformToGameType } from './transformToGameType.js'
 
 void describe('transformToGameType', () => {
 	for (const [txt, expected] of [
-        // /*
+        /*
 		[
 			`Game 1: 5 red, 1 green, 2 blue; 2 green, 8 blue, 6 red; 8 red, 3 blue, 2 green; 6 red, 1 green, 19 blue; 1 red, 17 blue`,
 			{
@@ -90,7 +90,7 @@ void describe('transformToGameType', () => {
 			{
 				id: 5,
 				rounds: [
-					{ red: 5, green: 3, blue: 1 },
+					{ red: 6, green: 3, blue: 1 },
 					{ red: 1, green: 2, blue: 2 },
 				],
 			},
@@ -100,7 +100,7 @@ void describe('transformToGameType', () => {
 			const game = transformToGameType(txt)
 
 			assert.equal(game.id, expected.id)
-			//assert.deepEqual(game.rounds, expected.rounds)
+			assert.deepEqual(game.rounds, expected.rounds)
 		})
 	}
 })
