@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { type Game } from './isGamePossible.js'
+import { getInfoFromGames } from './getInfoFromGames.js'
 
 void describe('getInfoFromGames', () => {
 	void it(`should return list of valid games and the sum of the IDs of those games`, () => {
@@ -46,17 +46,8 @@ void describe('getInfoFromGames', () => {
 			},
 		]
 		const expected = getInfoFromGames(gamesList)
-		assert.equal(expected.validGames, [1, 2, 5])
+		assert.deepEqual(expected.validGames, [1, 2, 5])
 		assert.equal(expected.sumOfIds, 8)
 	})
 })
 
-/**
- * info:
- * 	1- list of valid games (ids)
- * 	2- the sum of those ids 
- */
-const getInfoFromGames = (gamesList: Game[]) => ({
-	validGames: [1, 2, 50],
-	sumOfIds: 80,
-})
