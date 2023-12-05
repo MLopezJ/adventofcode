@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import type { Game } from './isGamePossible.js'
+import { resulStep2 } from './resultStep2'
 
 void describe('resulStep2', () => {
 	void it(`should return the sum of the power given a set of games`, () => {
@@ -49,15 +49,3 @@ void describe('resulStep2', () => {
 		assert.equal(resulStep2(gamesList), 2286)
 	})
 })
-
-/**
- * the sum of the power of games
- */
-const resulStep2 = (games: Game[]) => {
-	return null
-}
-
-/**
- * 
- */
-const getPower = (sets: Game) => null
