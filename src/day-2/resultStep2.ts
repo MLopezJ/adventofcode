@@ -1,3 +1,5 @@
+import { getFewestCubes } from './getFewestCubes.js'
+import { getPower } from './getPower.js'
 import type { Game } from './isGamePossible.js'
 
 /**
@@ -5,12 +7,8 @@ import type { Game } from './isGamePossible.js'
  */
 export const resulStep2 = (games: Game[]) =>
 	games
-		.map((game) => getPower(game))
+		.map((game) => getFewestCubes(game))
+		.map((fewestCubes) => getPower(fewestCubes))
 		.reduce((previous, current) => {
 			return previous + current
 		}, 0)
-
-/**
- *
- */
-const getPower = (sets: Game) => 1
