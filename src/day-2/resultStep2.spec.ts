@@ -40,7 +40,7 @@ void describe('resulStep2', () => {
 			{
 				id: 5,
 				rounds: [
-					{ red: 5, green: 3, blue: 1 },
+					{ red: 6, green: 3, blue: 1 },
 					{ red: 1, green: 2, blue: 2 },
 				],
 			},

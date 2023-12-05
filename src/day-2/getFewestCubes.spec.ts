@@ -73,13 +73,13 @@ void describe('getFewestCubes', () => {
 			{
 				id: 5,
 				rounds: [
-					{ red: 5, green: 3, blue: 1 },
+					{ red: 6, green: 3, blue: 1 },
 					{ red: 1, green: 2, blue: 2 },
 				],
 			},
 			{
 				id: 5,
-				red: 5,
+				red: 6,
 				green: 3,
 				blue: 2,
 			},
