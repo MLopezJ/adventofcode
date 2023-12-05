@@ -84,6 +84,21 @@ void describe('getFewestCubes', () => {
 				blue: 2,
 			},
 		],
+		[
+			{
+				id: 6,
+				rounds: [
+					{ red: 6, green: 0, blue: 1 },
+					{ red: 1, green: 0, blue: 2 },
+				],
+			},
+			{
+				id:6,
+				red: 6,
+				green: 0,
+				blue: 2,
+			},
+		],
 	] as [Game, Fewest][]) {
 		void it(`should return the fewest ammount of cubes per game in order of game ${game.id} be possible to be played`, () => {
 			assert.deepEqual(getFewestCubes(game), expected)

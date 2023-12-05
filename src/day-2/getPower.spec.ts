@@ -50,6 +50,15 @@ void describe('getPower', () => {
 			},
 			36,
 		],
+		[
+			{
+				id: 6,
+				red: 6,
+				green: 0,
+				blue: 2,
+			},
+			12,
+		],
 	] as [Fewest, number][]) {
 		void it(`should check that power of game ${game.id} is ${expected}`, () => {
 			assert.deepEqual(getPower(game), expected)
