@@ -4,6 +4,7 @@ import { type NumberInfo } from './getNumbers.js'
 import { hasNumberASymbolAdjacent } from './hasNumberASymbolAdjacent.js'
 
 void describe('hasNumberASymbolAdjacent', () => {
+    // TODO: improve logs in node test runner
 	for (const [input, expected] of [
 		// left, same row
 		[
