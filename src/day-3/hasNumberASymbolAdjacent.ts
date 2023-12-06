@@ -34,16 +34,25 @@ export const hasNumberASymbolAdjacent = (
 			return true
 
 		if (isSymbol(schematic[numberRow - 1][numberInfo.end]) === true) return true
+
+		// diagonal left
+		if (numberInfo.init > 0)
+			if (isSymbol(schematic[numberRow - 1][numberInfo.init - 1]) === true)
+				return true
 	}
 
 	// check buttom row
 	if (numberRow + 1 <= schematic.length - 1) {
-        
 		// down
 		if (isSymbol(schematic[numberRow + 1][numberInfo.init]) === true)
 			return true
 
 		if (isSymbol(schematic[numberRow + 1][numberInfo.end]) === true) return true
+
+		// diagonal left
+		if (numberInfo.init > 0)
+			if (isSymbol(schematic[numberRow + 1][numberInfo.init - 1]) === true)
+				return true
 	}
 
 	return false
