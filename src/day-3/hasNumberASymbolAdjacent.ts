@@ -14,14 +14,20 @@ export const hasNumberASymbolAdjacent = (
 	 * ['.', '.', '.', '*', '.', '.', '.', '.', '.', '.'],
 	 */
 
-    // console.log((schematic[numberRow] as string[])[numberInfo.init])
+	// console.log((schematic[numberRow] as string[])[numberInfo.init])
 
 	// check left, same rown
 	if (numberInfo.init > 0)
-		if (isSymbol((schematic[numberRow] as string[])[numberInfo.init - 1]) === true)
+		if (
+			isSymbol((schematic[numberRow] as string[])[numberInfo.init - 1]) === true
+		)
 			return true
 
-    return false
+	// check rigth, same rown
+	if (numberInfo.end < schematic[numberRow].length)
+		if (isSymbol(schematic[numberRow][numberInfo.end + 1]) === true) return true
+
+	return false
 	//return numberInfo.number === 467 ? true : false
 }
 
@@ -40,10 +46,10 @@ const isNumber = (element: string) =>
  * If element is not a dot and not a number, is a symbol
  */
 const isSymbol = (element: string | undefined) => {
-    if (element === undefined) {
-        console.log(Error('element is undefined'))
-        return false
-    }
+	if (element === undefined) {
+		console.log(Error('element is undefined'))
+		return false
+	}
 
-    return isDot(element) === false && isNumber(element) === false
+	return isDot(element) === false && isNumber(element) === false
 }
