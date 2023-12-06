@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { getNumberAdjacentToSymbol } from './getNumberAdjacentToSymbol.js'
+import { getNumbersAdjacentToSymbol } from './getNumbersAdjacentToSymbol.js'
 
 void describe('getNumberAdjacentToSymbol', () => {
 	void it(`should return a list with numbers adjecents to any symbol`, () => {
@@ -18,7 +18,7 @@ void describe('getNumberAdjacentToSymbol', () => {
 		]
 
 		assert.equal(
-			getNumberAdjacentToSymbol(schematic),
+			getNumbersAdjacentToSymbol(schematic),
 			[467, 35, 633, 617, 592, 755, 664, 598],
 		)
 	})
