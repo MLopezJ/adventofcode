@@ -27,6 +27,16 @@ export const hasNumberASymbolAdjacent = (
 	if (numberInfo.end < schematic[numberRow].length)
 		if (isSymbol(schematic[numberRow][numberInfo.end + 1]) === true) return true
 
+	// check upper row
+	if (numberRow > 0) {
+		// up
+		if (isSymbol(schematic[numberRow - 1][numberInfo.init]) === true)
+			return true
+
+        if (isSymbol(schematic[numberRow - 1][numberInfo.end]) === true)
+			return true
+	}
+
 	return false
 	//return numberInfo.number === 467 ? true : false
 }
