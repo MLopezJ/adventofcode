@@ -19,7 +19,7 @@ void describe('getNumberAdjacentToSymbol', () => {
 			*/
 		]
 
-		assert.equal(
+		assert.deepEqual(
 			getNumbersAdjacentToSymbol(schematic),
 			[467], // , 35, 633, 617, 592, 755, 664, 598
 		)
