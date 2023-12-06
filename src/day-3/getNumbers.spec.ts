@@ -13,7 +13,7 @@ void describe('getNumbers', () => {
 		],
 	] as [string[], NumberInfo[]][]) {
 		void it(`should return the numbers present in the token list`, () => {
-			assert.equal(getNumbers(token), expected)
+			assert.deepEqual(getNumbers(token), expected)
 		})
 	}
 })

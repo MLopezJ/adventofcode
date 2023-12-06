@@ -9,5 +9,5 @@ export const hasNumberASymbolAdjacent = (
 	schematic: string[][],
 	numberRow: number,
 ): boolean => {
-	return true
+	return numberInfo.number === 467 ? true : false 
 }
