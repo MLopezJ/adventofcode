@@ -9,12 +9,30 @@ export const hasNumberASymbolAdjacent = (
 	schematic: any, //string[][],
 	numberRow: number,
 ): boolean => {
-	/**
-	 * ['4', '6', '7', '.', '.', '1', '1', '4', '.', '.'],
-	 * ['.', '.', '.', '*', '.', '.', '.', '.', '.', '.'],
-	 */
 
-	// console.log((schematic[numberRow] as string[])[numberInfo.init])
+	if (numberInfo.number > 99) {
+		let hasSymbol
+		;[...Array(numberInfo.end - numberInfo.init).keys()] // array with the positions
+			.map((i) => i + numberInfo.init)
+			.forEach((position) => {
+				// check upper row
+				if (numberRow > 0) {
+					// up
+					if (isSymbol(schematic[numberRow - 1][position]) === true)
+						hasSymbol = true
+				}
+
+				// check down
+				if (numberRow + 1 <= schematic.length - 1) {
+					// down
+					if (isSymbol(schematic[numberRow + 1][position]) === true)
+						hasSymbol = true
+				}
+			})
+		if (hasSymbol === true) {
+			return true
+		}
+	}
 
 	// check left, same rown
 	if (numberInfo.init > 0)
