@@ -12,3 +12,4 @@ export const getNumbers = (token: string[]): NumberInfo[] => {
 		{ number: 114, init: 5, end: 7 },
 	]
 }
+// implement a reduce
