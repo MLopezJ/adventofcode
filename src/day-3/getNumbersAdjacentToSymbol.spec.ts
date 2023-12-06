@@ -24,4 +24,6 @@ void describe('getNumberAdjacentToSymbol', () => {
 			[467], // , 35, 633, 617, 592, 755, 664, 598
 		)
 	})
+
+	// should not count same number twice
 })
