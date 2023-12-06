@@ -1,4 +1,5 @@
-import { getNumbers, type NumberInfo } from './getNumbers.js'
+import { getNumbers } from './getNumbers.js'
+import { hasNumberASymbolAdjacent } from './hasNumberASymbolAdjacent.js'
 
 /**
  * Adjacent contemplate up, down, left, rigth and diagonal
@@ -6,28 +7,17 @@ import { getNumbers, type NumberInfo } from './getNumbers.js'
  */
 export const getNumbersAdjacentToSymbol = (schematic: string[]): number[] => {
 	const tokenizedSchematic = schematic.map((elment) => elment.split(''))
-	console.log(tokenizedSchematic)
 
+	const numbersAdjacentToSymbol: number[] = []
 	tokenizedSchematic.forEach((token, index) => {
 		// get number
 		const numbersInLine = getNumbers(token)
 
 		// get adjacent
-		numbersInLine.filter((number) =>
-			hasNumberASymbolAdjacent(number, tokenizedSchematic, index),
-		)
+		numbersInLine.forEach((number) => {
+			if (hasNumberASymbolAdjacent(number, tokenizedSchematic, index) === true)
+				numbersAdjacentToSymbol.push(number.number)
+		})
 	})
-	return [0]
-}
-
-/**
- * Adjacent contemplate up, down, left, rigth and diagonal
- * dot (".") is not considered a symbol
- */
-const hasNumberASymbolAdjacent = (
-	numberInfo: NumberInfo,
-	schematic: string[][],
-	numberRow: number,
-): boolean => {
-	return true
+	return numbersAdjacentToSymbol
 }
