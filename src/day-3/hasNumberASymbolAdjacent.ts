@@ -14,41 +14,12 @@ export const hasNumberASymbolAdjacent = (
 	 * ['.', '.', '.', '*', '.', '.', '.', '.', '.', '.'],
 	 */
 
-    console.log((schematic[numberRow] as string[])[numberInfo.init])
+    // console.log((schematic[numberRow] as string[])[numberInfo.init])
 
 	// check left, same rown
 	if (numberInfo.init > 0)
 		if (isSymbol((schematic[numberRow] as string[])[numberInfo.init - 1]) === true)
 			return true
-
-	// check rigth, same rown
-	if (numberInfo.end < schematic[numberRow].length)
-		if (isSymbol(schematic[numberRow][numberInfo.end + 1]) === true)
-			return true
-
-	// check upper row
-	if (numberRow > 0) {
-        // left
-		if (isSymbol(schematic[numberRow -1][numberInfo.init - 1]) === true)
-			return true
-        
-        // rigth
-        if (isSymbol(schematic[numberRow -1][numberInfo.end + 1]) === true)
-			return true
-
-        // diagonal
-	}
-
-	// check buttom row
-	if (numberRow + 1 <= schematic.length) {
-		// left
-		if (isSymbol(schematic[numberRow -1][numberInfo.init - 1]) === true)
-			return true
-        
-        // rigth
-        if (isSymbol(schematic[numberRow -1][numberInfo.end + 1]) === true)
-			return true
-	}
 
     return false
 	//return numberInfo.number === 467 ? true : false

@@ -7,10 +7,10 @@ void describe('hasNumberASymbolAdjacent', () => {
 	for (const [input, expected] of [
 		[
 			{
-				numberInfo: { number: 467, init: 0, end: 2 },
+				numberInfo: { number: 67, init: 1, end: 2 },
 				schematic: [
-					['4', '6', '7', '.', '.', '1', '1', '4', '.', '.'],
-					['.', '.', '.', '*', '.', '.', '.', '.', '.', '.'],
+					['*', '6', '7', '.', '.', '1', '1', '4', '.', '.'],
+					['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
 				],
 				numberRow: 0,
 			},
