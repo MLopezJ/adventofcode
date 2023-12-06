@@ -44,6 +44,19 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
+        // buttom row
+        [
+			{
+				numberInfo: { number: 67, init: 1, end: 2 },
+				schematic: [
+					['.', '6', '7', '.', '.', '1', '1', '4', '.', '.'],
+					['.', '.', '^', '.', '.', '.', '.', '.', '.', '.'],
+				],
+				numberRow: 0,
+			},
+			true,
+		],
+
 	] as [
 		{ numberInfo: NumberInfo; schematic: string[][]; numberRow: number },
 		boolean,
