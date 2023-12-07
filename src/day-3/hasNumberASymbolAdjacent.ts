@@ -12,7 +12,7 @@ export const hasNumberASymbolAdjacent = (
 
 	if (numberInfo.number > 99) {
 		let hasSymbol
-		;[...Array(numberInfo.end - numberInfo.init).keys()] // array with the positions
+		;[...Array(numberInfo.end - numberInfo.init+1).keys()] // array with the positions
 			.map((i) => i + numberInfo.init)
 			.forEach((position) => {
 				// check upper row
