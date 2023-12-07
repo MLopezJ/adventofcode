@@ -24,3 +24,6 @@ The engine schematic consists of a visual representation of the engine. There ar
 In this schematic, two numbers are not part numbers because they are not adjacent to a symbol: `114` (top right) and `58` (middle right). Every other number is adjacent to a symbol and so is a part number; their sum is `4361`.
 
 What is the sum of all of the part numbers in the actual engine schematic?
+
+## Solution
+the sum of all of the part numbers in the actual engine schematic is `516889`
