@@ -59,7 +59,7 @@ export const hasNumberASymbolAdjacent = (
 				return true
 
 		// diagonal rigth
-		if (numberInfo.init > 0)
+		if (numberInfo.end < schematic[numberRow - 1].length)
 			if (isSymbol(schematic[numberRow - 1][numberInfo.end + 1]) === true)
 				return true
 	}
@@ -78,7 +78,7 @@ export const hasNumberASymbolAdjacent = (
 				return true
 
 		// diagonal right
-		if (numberInfo.init > 0)
+		if (numberInfo.end < schematic[numberRow + 1].length)
 			if (isSymbol(schematic[numberRow + 1][numberInfo.end + 1]) === true)
 				return true
 	}

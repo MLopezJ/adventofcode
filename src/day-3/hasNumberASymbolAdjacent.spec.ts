@@ -61,10 +61,10 @@ void describe('hasNumberASymbolAdjacent', () => {
 		// upper row diagonal right
 		[
 			{
-				numberInfo: { number: 67, init: 1, end: 2 },
+				numberInfo: { number: 467, init: 0, end: 2 },
 				schematic: [
-					['.', '.', '.', '-', '.', '.', '.', '.', '.', '.'],
-					['.', '6', '7', '.', '.', '1', '1', '4', '.', '.'],
+					['.', '.', '.', '*', '.', '.', '.', '.', '.', '.'],
+					['4', '6', '7', '.', '.', '1', '1', '4', '.', '.'],
 				],
 				numberRow: 1,
 			},
@@ -104,6 +104,19 @@ void describe('hasNumberASymbolAdjacent', () => {
 				schematic: [
 					['.', '6', '7', '.', '.', '1', '1', '4', '6', '.'],
 					['.', '.', '.', '.', '.', '.', '.', '.', '.', '?'],
+				],
+				numberRow: 0,
+			},
+			true,
+		],
+
+		// buttom row diagonal rigth beeggining
+		[
+			{
+				numberInfo: { number: 467, init: 0, end: 2 },
+				schematic: [
+					['4', '6', '7', '.', '.', '1', '1', '4', '.', '.'],
+					['.', '.', '.', '*', '.', '.', '.', '.', '.', '.'],
 				],
 				numberRow: 0,
 			},
