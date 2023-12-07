@@ -94,7 +94,7 @@ const isDot = (element: string) => element === '.'
 /**
  * Return true if element is numeric
  */
-const isNumber = (element: string) =>
+export const isNumber = (element: string) =>
 	isNaN(element as unknown as number) === false
 
 /**
