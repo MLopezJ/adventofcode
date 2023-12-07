@@ -67,16 +67,11 @@ export const getNumbers = (tokens: string[]): NumberInfo[] => {
 	const list = getList(tokens)
 	const x = list.list
 		?.filter((element) => element !== undefined)
-        .map(x => {
-            console.log(x)
-            return x
-        })
 		.map( (element) => {
 			//let num = ''
 			
 			// return num
             const num =  getNum(element.init, element.end, tokens)
-            console.log(num)
             return {...element, number: Number(num)}
 		})
 	//console.log()
