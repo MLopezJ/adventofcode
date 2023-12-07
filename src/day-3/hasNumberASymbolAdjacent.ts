@@ -9,13 +9,13 @@ export const hasNumberASymbolAdjacent = (
 	schematic: any, //string[][],
 	numberRow: number,
 ): boolean => {
-
 	if (numberInfo.number > 99) {
 		let hasSymbol
-		;[...Array(numberInfo.end - numberInfo.init+1).keys()] // array with the positions
+		;[...Array(numberInfo.end - numberInfo.init + 1).keys()] // array with the positions
 			.map((i) => i + numberInfo.init)
 			.forEach((position) => {
 				// check upper row
+				// TODO: combine ifs
 				if (numberRow > 0) {
 					// up
 					if (isSymbol(schematic[numberRow - 1][position]) === true)
@@ -23,6 +23,7 @@ export const hasNumberASymbolAdjacent = (
 				}
 
 				// check down
+				// TODO: combine ifs
 				if (numberRow + 1 <= schematic.length - 1) {
 					// down
 					if (isSymbol(schematic[numberRow + 1][position]) === true)
@@ -35,6 +36,7 @@ export const hasNumberASymbolAdjacent = (
 	}
 
 	// check left, same rown
+	// TODO: combine ifs
 	if (numberInfo.init > 0)
 		if (
 			isSymbol((schematic[numberRow] as string[])[numberInfo.init - 1]) === true
@@ -42,6 +44,7 @@ export const hasNumberASymbolAdjacent = (
 			return true
 
 	// check rigth, same rown
+	// TODO: combine ifs
 	if (numberInfo.end < schematic[numberRow].length)
 		if (isSymbol(schematic[numberRow][numberInfo.end + 1]) === true) return true
 
@@ -54,11 +57,13 @@ export const hasNumberASymbolAdjacent = (
 		if (isSymbol(schematic[numberRow - 1][numberInfo.end]) === true) return true
 
 		// diagonal left
+		// TODO: combine ifs
 		if (numberInfo.init > 0)
 			if (isSymbol(schematic[numberRow - 1][numberInfo.init - 1]) === true)
 				return true
 
 		// diagonal rigth
+		// TODO: combine ifs
 		if (numberInfo.end < schematic[numberRow - 1].length)
 			if (isSymbol(schematic[numberRow - 1][numberInfo.end + 1]) === true)
 				return true
@@ -73,11 +78,13 @@ export const hasNumberASymbolAdjacent = (
 		if (isSymbol(schematic[numberRow + 1][numberInfo.end]) === true) return true
 
 		// diagonal left
+		// TODO: combine ifs
 		if (numberInfo.init > 0)
 			if (isSymbol(schematic[numberRow + 1][numberInfo.init - 1]) === true)
 				return true
 
 		// diagonal right
+		// TODO: combine ifs
 		if (numberInfo.end < schematic[numberRow + 1].length)
 			if (isSymbol(schematic[numberRow + 1][numberInfo.end + 1]) === true)
 				return true
