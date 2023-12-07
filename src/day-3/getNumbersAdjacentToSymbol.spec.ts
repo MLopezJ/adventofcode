@@ -7,7 +7,6 @@ void describe('getNumberAdjacentToSymbol', () => {
 		const schematic = [
 			'467..114..',
 			'...*......',
-			/*
 			'..35..633.',
 			'......#...',
 			'617*......',
@@ -16,14 +15,13 @@ void describe('getNumberAdjacentToSymbol', () => {
 			'......755.',
 			'...$.*....',
 			'.664.598..',
-			*/
 		]
 
 		assert.deepEqual(
 			getNumbersAdjacentToSymbol(schematic),
-			[467], // , 35, 633, 617, 592, 755, 664, 598
+			[467, 35, 633, 617, 592, 755, 664, 598],
 		)
 	})
 
-	// should not count same number twice
+	// TODO: should not count same number twice
 })
