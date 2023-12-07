@@ -11,11 +11,11 @@ void describe('getNumbers', () => {
 				{ number: 114, init: 5, end: 7 },
 			],
 		],
+
+		[['.', '.', '.', '*', '.', '.', '.', '.', '.', '.'], []],
 	] as [string[], NumberInfo[]][]) {
 		void it(`should return the numbers present in the token list`, () => {
 			assert.deepEqual(getNumbers(token), expected)
 		})
 	}
 })
-
-

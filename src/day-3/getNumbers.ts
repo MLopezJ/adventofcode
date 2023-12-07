@@ -5,51 +5,86 @@ export type NumberInfo = {
 	init: number
 	end: number
 }
+
+type Carrier = { init: any; end: any }
+type ReduceType = { list: Carrier[]; carrier: Carrier }
+
+const getList = (
+	tokens: string[],
+): {
+	list: undefined | Carrier[]
+	carrier: undefined
+} =>
+	tokens
+		.map((token, index) => {
+			if (isNumber(token) === true) return index
+			return undefined
+		})
+		.reduce(
+			(previus: any, current: any) => {
+				if (current === undefined) {
+					if (previus.list === undefined) {
+						return {
+							list: [previus.carrier],
+							carrier: undefined,
+						}
+					}
+					return {
+						list: [...previus.list, previus.carrier],
+						carrier: undefined,
+					}
+				}
+
+				if (previus.carrier !== undefined) {
+					return {
+						list: previus.list,
+						carrier: { init: previus.carrier.init, end: current },
+					}
+				}
+
+				return {
+					list: previus.list,
+					carrier: { init: current, end: current },
+				}
+			},
+			{ list: undefined, carrier: undefined },
+		)
+
+
+const getNum = (init: number, end: number, tokens: string[]) => {
+    return [...Array(end - init + 1).keys()] // array with the positions
+				.map((i) => i + init)
+				.reduce((previous, current) => {
+                    //console.log(`${previous}${tokens[current]}`)
+					return `${previous}${tokens[current]}`
+				}, '')
+}
 /**
  * Get the numbers and position where it starts and end in the token
  */
 export const getNumbers = (tokens: string[]): NumberInfo[] => {
-	/**
-        ['4', '6', '7', '.', '.', '1', '1', '4', '.', '.'],
-        [
-            { number: 467, init: 0, end: 2 },
-            { number: 114, init: 5, end: 7 },
-        ],
-
-
-        [
-            0,         1,
-            2,         undefined,
-            undefined, 5,
-            6,         7,
-            undefined, undefined
-        ]
-     */
-
-	console.log(
-		tokens
-			.map((token, index) => {
-				if (isNumber(token) === true) return index
-				return undefined
-			})
-			.reduce((previus, current) => {
-				if (current === undefined)  {
-                    console.log('change', previus)
-                    return previus
-                }
-
-				if (previus.length === 0) {
-					return [{ init: current, end: current }]
-				}
-
-				const temp = previus.splice(-1) as any
-                console.log(temp[0])
-				return [...previus, { init: temp[0].init, end: current }]
-			}, []),
-	)
+	
+	const list = getList(tokens)
+	const x = list.list
+		?.filter((element) => element !== undefined)
+        .map(x => {
+            console.log(x)
+            return x
+        })
+		.map( (element) => {
+			//let num = ''
+			
+			// return num
+            const num =  getNum(element.init, element.end, tokens)
+            console.log(num)
+            return {...element, number: Number(num)}
+		})
+	//console.log()
+    return x as NumberInfo[]
+    /*
 	return [
 		{ number: 467, init: 0, end: 2 },
 		{ number: 114, init: 5, end: 7 },
-	]
+	]*/
 }
 // implement a reduce
