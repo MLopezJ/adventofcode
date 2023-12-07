@@ -167,9 +167,9 @@ void describe('hasNumberASymbolAdjacent', () => {
 
         [
 			{
-				numberInfo: { number: 6789114, init: 1, end: 7 },
+				numberInfo: { number: 6666666, init: 1, end: 7 },
 				schematic: [
-					['.', '6', '7', '8', '9', '1', '1', '4', '.', '.'],
+					['.', '6', '6', '6', '6', '6', '6', '6', '.', '.'],
 					['.', '.', '*', '.', '.', '$', '.', '.', '.', '.'],
 				],
 				numberRow: 0,
