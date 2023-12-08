@@ -126,7 +126,7 @@ const isSymbol = ({
 }) => {
 	const element: string | undefined = schematic[row][column]
 	if (element === undefined) {
-		console.log(Error('element is undefined'))
+		console.log(Error(`element is undefined. Row: ${row}, Column: ${column}`))
 		return false
 	}
 
