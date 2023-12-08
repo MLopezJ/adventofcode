@@ -38,4 +38,22 @@ void describe('gearRatios', () => {
 
 		assert.equal(number, 33414)
 	})
+
+	void it(`should sum all the part numbers of the engine schematic (4 lines)`, async () => {
+		const logs = await getEngineSchematic('engineSchematic-10.txt')
+		/**
+		 expected: 
+		    // 1
+			507,961, 668, 189, 906,
+			// 2 
+			805, 130, 880, 684, 17, 65, 91, 
+			// 3
+			464, 208, 260, 967, 38, 692, 676, 247, 652, 74, 
+			// 4
+			454, 859, 267,  
+		 */
+		const number = gearRatios(logs)
+
+		assert.equal(number, 11761)
+	})
 })
