@@ -35,7 +35,7 @@ export const gearRatios = (logs: string[]) => {
 /**
  * Result of day 3
  */
-const result = async () => {
+export const result = async () => {
 	const logs = await getEngineSchematic('engineSchematic.txt')
 	const number = gearRatios(logs)
 
@@ -44,4 +44,3 @@ const result = async () => {
 	)
 }
 
-result()
