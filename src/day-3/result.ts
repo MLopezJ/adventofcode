@@ -38,4 +38,4 @@ const result = async () => {
 	)
 }
 
-result()
+//result()
