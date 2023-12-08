@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { getNumbersAdjacentToSymbol } from './getNumbersAdjacentToSymbol'
+import { getNumbersAdjacentToAsterisk } from './getNumbersAdjacentToAsterisk'
 
 /**
  * Get engine schematic
@@ -46,8 +47,22 @@ export const result = async () => {
 }
 
 /**
- * a gear is a '*' symbol with numbers adjacent to it.
+ * A gear is any * symbol that is adjacent to exactly two part numbers.
  */
 export const getGears = (logs: string[]): number => {
-	return 0
+	const numbersAdjacentToAsterisk = getNumbersAdjacentToAsterisk(logs)
+
+	const numbers = numbersAdjacentToAsterisk.map((element) => {
+		return element.numbers.map((number) => number.number)
+	})
+
+	// TODO: filter * with more or less than 2 numbers
+
+	const result = numbers.reduce((previus: number, current: number[]) => {
+		// A gear is any * symbol that is adjacent to EXACTLY two part numbers.
+		const multp = (current[0] as number) * (current[1] as number)
+		return multp + previus
+	}, 0)
+
+	return result
 }
