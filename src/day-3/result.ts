@@ -24,6 +24,7 @@ export const sum = (numbers: number[]) =>
 
 /**
  * Get the sum of all the part numbers in the engine schematic
+ * Part I of the problem
  */
 export const gearRatios = (logs: string[]) => {
 	const numbers = getNumbersAdjacentToSymbol(logs)
@@ -44,3 +45,9 @@ export const result = async () => {
 	)
 }
 
+/**
+ * a gear is a '*' symbol with numbers adjacent to it.
+ */
+export const getGears = (logs: string[]): number => {
+	return 0
+}
