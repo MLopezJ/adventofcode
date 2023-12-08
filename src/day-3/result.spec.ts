@@ -9,7 +9,6 @@ void describe('gearRatios', () => {
 		assert.equal(number, 4361)
 	})
 
-	/*
 	void it(`should sum all the part numbers of the engine schematic (10 lines)`, async () => {
 		const logs = await getEngineSchematic('engineSchematic-10.txt')
 		/**
@@ -34,12 +33,12 @@ void describe('gearRatios', () => {
 			463, 183, 961, 572, 618, 52, 205, 429,
 			// 10
 			204, 550, 628, 240, 588, 167, 776
-		 
-		const number = gearRatios(logs)
+		*/ 
 
-		assert.equal(number, 33414)
+		const number = gearRatios(logs)
+		assert.equal(number, 34171)
 	})
-	*/
+	
 
 	void it(`should sum all the part numbers of the engine schematic (4 lines)`, async () => {
 		const logs = await getEngineSchematic('engineSchematic-4.txt')
