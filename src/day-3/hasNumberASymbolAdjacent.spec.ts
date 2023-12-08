@@ -4,10 +4,9 @@ import { type NumberInfo } from './getNumbers.js'
 import { hasNumberASymbolAdjacent } from './hasNumberASymbolAdjacent.js'
 
 void describe('hasNumberASymbolAdjacent', () => {
-	// TODO: improve logs in node test runner
-	for (const [input, expected] of [
-		// left, same row
+	for (const [testType, input, expected] of [
 		[
+			'left, same row',
 			{
 				numberInfo: { number: 67, init: 1, end: 2 },
 				schematic: [
@@ -19,8 +18,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// rigth, same row
 		[
+			'rigth, same row',
 			{
 				numberInfo: { number: 1146, init: 5, end: 8 },
 				schematic: [
@@ -32,8 +31,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// upper row
 		[
+			'upper row',
 			{
 				numberInfo: { number: 67, init: 1, end: 2 },
 				schematic: [
@@ -45,8 +44,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// upper row diagonal left
 		[
+			'upper row diagonal left',
 			{
 				numberInfo: { number: 67, init: 1, end: 2 },
 				schematic: [
@@ -58,8 +57,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// upper row diagonal right
 		[
+			'upper row diagonal right',
 			{
 				numberInfo: { number: 467, init: 0, end: 2 },
 				schematic: [
@@ -71,8 +70,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// buttom row
 		[
+			'buttom row',
 			{
 				numberInfo: { number: 67, init: 1, end: 2 },
 				schematic: [
@@ -84,8 +83,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// buttom row diagonal left
 		[
+			'buttom row diagonal left',
 			{
 				numberInfo: { number: 67, init: 1, end: 2 },
 				schematic: [
@@ -97,8 +96,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// buttom row diagonal rigth
 		[
+			'buttom row diagonal rigth',
 			{
 				numberInfo: { number: 1146, init: 5, end: 8 },
 				schematic: [
@@ -110,8 +109,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// buttom row diagonal rigth beeggining
 		[
+			'buttom row diagonal rigth beeggining',
 			{
 				numberInfo: { number: 467, init: 0, end: 2 },
 				schematic: [
@@ -123,8 +122,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-		// end of line
 		[
+			'end of line',
 			{
 				numberInfo: { number: 781, init: 7, end: 9 },
 				schematic: [
@@ -136,9 +135,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			},
 			true,
 		],
-
-		// beggining of line
 		[
+			'beggining of line',
 			{
 				numberInfo: { number: 344, init: 0, end: 2 },
 				schematic: [
@@ -151,10 +149,11 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 	] as [
+		testType: string,
 		{ numberInfo: NumberInfo; schematic: string[][]; numberRow: number },
 		boolean,
 	][]) {
-		void it(`should check if there is an adjacent symbol to the number`, () => {
+		void it(`should check if there is an adjacent symbol to the number: ${testType}`, () => {
 			assert.equal(
 				hasNumberASymbolAdjacent(
 					input.numberInfo,
@@ -193,7 +192,7 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
-        [
+		[
 			{
 				numberInfo: { number: 6666666, init: 1, end: 7 },
 				schematic: [
