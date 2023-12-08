@@ -40,7 +40,7 @@ void describe('gearRatios', () => {
 	})
 
 	void it(`should sum all the part numbers of the engine schematic (4 lines)`, async () => {
-		const logs = await getEngineSchematic('engineSchematic-10.txt')
+		const logs = await getEngineSchematic('engineSchematic-4.txt')
 		/**
 		 expected: 
 		    // 1
