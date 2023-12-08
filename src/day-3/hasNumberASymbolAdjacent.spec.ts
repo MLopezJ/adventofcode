@@ -122,6 +122,34 @@ void describe('hasNumberASymbolAdjacent', () => {
 			},
 			true,
 		],
+
+		// end of line
+		[
+			{
+				numberInfo: { number: 781, init: 7, end: 9 },
+				schematic: [
+					['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+					['3', '4', '4', '.', '.', '.', '.', '7', '8', '1'],
+					['.', '.', '.', '.', '.', '.', '.', '.', '.', '*'],
+				],
+				numberRow: 2,
+			},
+			true,
+		],
+
+		// beggining of line
+		[
+			{
+				numberInfo: { number: 344, init: 0, end: 2 },
+				schematic: [
+					['.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+					['3', '4', '4', '.', '.', '.', '.', '7', '8', '1'],
+					['*', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+				],
+				numberRow: 2,
+			},
+			true,
+		],
 	] as [
 		{ numberInfo: NumberInfo; schematic: string[][]; numberRow: number },
 		boolean,
