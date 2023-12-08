@@ -13,6 +13,14 @@ void describe('getNumbers', () => {
 		],
 
 		[['.', '.', '.', '*', '.', '.', '.', '.', '.', '.'], []],
+		
+		[
+			['6', '5', '1', '*', '.', '.', '-', '5', '0', '9'],
+			[
+				{ number: 651, init: 0, end: 2 },
+				{ number: 509, init: 7, end: 9 },
+			],
+		],
 	] as [string[], NumberInfo[]][]) {
 		void it(`should return the numbers present in the token list`, () => {
 			assert.deepEqual(getNumbers(token), expected)
