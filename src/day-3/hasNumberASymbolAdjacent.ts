@@ -52,7 +52,7 @@ export const hasNumberASymbolAdjacent = (
 	// check rigth, same rown
 	// TODO: combine ifs
 	if (numberInfo.end < schematic[numberRow].length)
-		if (isSymbol({row: numberRow , column: numberInfo.init + 1, schematic }) === true) return true
+		if (isSymbol({row: numberRow , column: numberInfo.end + 1, schematic }) === true) return true
 		
 	// check upper row
 	if (numberRow > 0) {
@@ -72,7 +72,7 @@ export const hasNumberASymbolAdjacent = (
 		// diagonal rigth
 		// TODO: combine ifs
 		if (numberInfo.end < schematic[numberRow - 1].length)
-			if (isSymbol({row: numberRow - 1 , column: numberInfo.init +1, schematic }) === true)
+			if (isSymbol({row: numberRow - 1 , column: numberInfo.end +1, schematic }) === true)
 				return true
 	}
 

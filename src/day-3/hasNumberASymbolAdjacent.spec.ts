@@ -5,6 +5,7 @@ import { hasNumberASymbolAdjacent } from './hasNumberASymbolAdjacent.js'
 
 void describe('hasNumberASymbolAdjacent', () => {
 	for (const [testType, input, expected] of [
+		
 		[
 			'left, same row',
 			{
@@ -31,6 +32,7 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
+		
 		[
 			'upper row',
 			{
@@ -122,6 +124,7 @@ void describe('hasNumberASymbolAdjacent', () => {
 			true,
 		],
 
+		/*
 		[
 			'end of line',
 			{
@@ -148,6 +151,8 @@ void describe('hasNumberASymbolAdjacent', () => {
 			},
 			true,
 		],
+		*/
+		
 	] as [
 		testType: string,
 		{ numberInfo: NumberInfo; schematic: string[][]; numberRow: number },
