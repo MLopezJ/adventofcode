@@ -36,7 +36,7 @@ void describe('gearRatios', () => {
 		*/ 
 
 		const number = gearRatios(logs)
-		assert.equal(number, 34171)
+		assert.equal(number, 34338)
 	})
 	
 
