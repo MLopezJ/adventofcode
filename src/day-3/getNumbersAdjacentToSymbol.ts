@@ -1,4 +1,4 @@
-import { getNumbers } from './getNumbers.js'
+import { getToken } from './getTokens.js'
 import { hasNumberASymbolAdjacent } from './hasNumberASymbolAdjacent.js'
 
 /**
@@ -11,7 +11,7 @@ export const getNumbersAdjacentToSymbol = (schematic: string[]): number[] => {
 	const numbersAdjacentToSymbol: number[] = []
 	tokenizedSchematic.forEach((token, index) => {
 		// get number
-		const numbersInLine = getNumbers(token)
+		const numbersInLine = getToken('number',token)
 
 		// get adjacent
 		numbersInLine.forEach((number) => {

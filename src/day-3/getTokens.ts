@@ -1,4 +1,4 @@
-import { isNumber } from './hasNumberASymbolAdjacent'
+import { isAsterisk, isNumber } from './hasNumberASymbolAdjacent'
 
 export type NumberInfo = {
 	number: number
@@ -11,13 +11,14 @@ type ReduceType = { list: Carrier[]; carrier: Carrier }
 
 const getList = (
 	tokens: string[],
+	selectionCriteria: (element: string) => boolean,
 ): {
 	list: undefined | Carrier[]
 	carrier: undefined
 } =>
 	tokens
 		.map((token, index) => {
-			if (isNumber(token) === true) return index
+			if (selectionCriteria(token) === true) return index
 			return undefined
 		})
 		.reduce(
@@ -58,11 +59,19 @@ const getNum = (init: number, end: number, tokens: string[]) => {
 			return `${previous}${tokens[current]}`
 		}, '')
 }
+
+export type TokenType = 'number' | 'asterisk'
+
 /**
  * Get the numbers and position where it starts and end in the token
  */
-export const getNumbers = (tokens: string[]): NumberInfo[] => {
-	const list = getList(tokens)
+export const getToken = (
+	tokenType: TokenType,
+	tokens: string[],
+): NumberInfo[] => {
+	const selectionCriteria = tokenType === 'number' ? isNumber : isAsterisk
+
+	const list = getList(tokens, selectionCriteria)
 	const l =
 		list.carrier !== undefined && list.list !== undefined
 			? [...list.list, list.carrier]
@@ -74,8 +83,11 @@ export const getNumbers = (tokens: string[]): NumberInfo[] => {
 			//let num = ''
 
 			// return num
-			const num = getNum(element.init, element.end, tokens)
-			return { ...element, number: Number(num) }
+			const token =
+				tokenType === 'number'
+					? Number(getNum(element.init, element.end, tokens))
+					: '*'
+			return { ...element, number: token }
 		})
 	//console.log()
 	return x as NumberInfo[]

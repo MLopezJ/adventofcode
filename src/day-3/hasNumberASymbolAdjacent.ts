@@ -1,4 +1,4 @@
-import type { NumberInfo } from './getNumbers.ts'
+import type { NumberInfo } from './getTokens.js'
 
 /**
  * Adjacent contemplate up, down, left, rigth and diagonal
@@ -105,6 +105,11 @@ export const hasNumberASymbolAdjacent = (
  * Return true if element is "."
  */
 const isDot = (element: string) => element === '.'
+
+/**
+ * Return true if element is "*"
+ */
+export const isAsterisk = (element: string) => element === '*'
 
 /**
  * Return true if element is numeric

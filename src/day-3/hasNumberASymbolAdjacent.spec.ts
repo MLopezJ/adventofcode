@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { type NumberInfo } from './getNumbers.js'
+import { type NumberInfo } from './getTokens.js'
 import { hasNumberASymbolAdjacent } from './hasNumberASymbolAdjacent.js'
 
 void describe('hasNumberASymbolAdjacent', () => {

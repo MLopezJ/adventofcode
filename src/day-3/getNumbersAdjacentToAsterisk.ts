@@ -1,4 +1,4 @@
-import type { NumberInfo } from './getNumbers.js'
+import { getToken, type NumberInfo } from './getTokens.js'
 
 type N = NumberInfo & { row: number }
 export type AsteriskInfo = {
@@ -15,6 +15,25 @@ export type AsteriskInfo = {
 export const getNumbersAdjacentToAsterisk = (
 	schematic: string[],
 ): AsteriskInfo[] => {
+
+    // tokenize input 
+
+    const tokenizedSchematic = schematic.map((elment) => elment.split(''))
+
+    //console.log(tokenizedSchematic)
+
+    const numbersAdjacentToSymbol: number[] = []
+	tokenizedSchematic.forEach((token, index) => {
+		// get number
+		const tokensInRow = getToken('asterisk',token)
+        console.log(tokensInRow, index)
+
+		// get adjacent
+		
+	})
+
+
+    
 	return [
 		{
 			numbers: [
