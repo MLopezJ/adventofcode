@@ -15,13 +15,19 @@ export const getEngineSchematic = async (file: string) => {
 }
 
 /**
+ * Sum elements in list
+ */
+export const sum = (numbers: number[]) =>
+	numbers.reduce((previous, current) => {
+		return previous + current
+	}, 0)
+
+/**
  * Get the sum of all the part numbers in the engine schematic
  */
 export const gearRatios = (logs: string[]) => {
 	const numbers = getNumbersAdjacentToSymbol(logs)
-	const result = numbers.reduce((previous, current) => {
-		return previous + current
-	}, 0)
+	const result = sum(numbers)
 
 	return result
 }

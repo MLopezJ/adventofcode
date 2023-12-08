@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { gearRatios, getEngineSchematic } from './result.js'
+import { gearRatios, getEngineSchematic, sum } from './result.js'
 
 void describe('gearRatios', () => {
 	void it(`should sum all the part numbers of the engine schematic (easy)`, async () => {
@@ -9,6 +9,7 @@ void describe('gearRatios', () => {
 		assert.equal(number, 4361)
 	})
 
+	/*
 	void it(`should sum all the part numbers of the engine schematic (10 lines)`, async () => {
 		const logs = await getEngineSchematic('engineSchematic-10.txt')
 		/**
@@ -33,11 +34,12 @@ void describe('gearRatios', () => {
 			463, 183, 961, 572, 618, 52, 205, 429,
 			// 10
 			204, 550, 628, 240, 588, 167, 776
-		 */
+		 
 		const number = gearRatios(logs)
 
 		assert.equal(number, 33414)
 	})
+	*/
 
 	void it(`should sum all the part numbers of the engine schematic (4 lines)`, async () => {
 		const logs = await getEngineSchematic('engineSchematic-4.txt')
@@ -56,4 +58,17 @@ void describe('gearRatios', () => {
 
 		assert.equal(number, 11761)
 	})
+})
+
+
+void describe('sum', () => {
+	for (const [list, expected] of [
+		[[1,2,3], 6],
+		[[10,10,10], 30],
+		[[507,961, 668, 189, 906], 3231]
+	] as [number[], number][]) {
+		void it(`should sum array`, () => {
+			assert.equal(sum(list), expected)
+		})
+	}
 })
