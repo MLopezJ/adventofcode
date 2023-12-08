@@ -18,7 +18,10 @@ export const hasNumberASymbolAdjacent = (
 				// TODO: combine ifs
 				if (numberRow > 0) {
 					// up
-					if (isSymbol(schematic[numberRow - 1][position]) === true)
+					if (
+						isSymbol({ row: numberRow - 1, column: position, schematic }) ===
+						true
+					)
 						hasSymbol = true
 				}
 
@@ -26,7 +29,8 @@ export const hasNumberASymbolAdjacent = (
 				// TODO: combine ifs
 				if (numberRow + 1 <= schematic.length - 1) {
 					// down
-					if (isSymbol(schematic[numberRow + 1][position]) === true)
+					
+					if (isSymbol({row: numberRow + 1, column: position, schematic }) === true)
 						hasSymbol = true
 				}
 			})
@@ -39,54 +43,58 @@ export const hasNumberASymbolAdjacent = (
 	// TODO: combine ifs
 	if (numberInfo.init > 0)
 		if (
-			isSymbol((schematic[numberRow] as string[])[numberInfo.init - 1]) === true
+			// 
+			isSymbol({row: numberRow , column: numberInfo.init - 1, schematic }) === true
 		)
+		
 			return true
 
 	// check rigth, same rown
 	// TODO: combine ifs
 	if (numberInfo.end < schematic[numberRow].length)
-		if (isSymbol(schematic[numberRow][numberInfo.end + 1]) === true) return true
-
+		if (isSymbol({row: numberRow , column: numberInfo.init + 1, schematic }) === true) return true
+		
 	// check upper row
 	if (numberRow > 0) {
 		// up
-		if (isSymbol(schematic[numberRow - 1][numberInfo.init]) === true)
+		if (isSymbol({row: numberRow - 1 , column: numberInfo.init, schematic }) === true)
 			return true
 
-		if (isSymbol(schematic[numberRow - 1][numberInfo.end]) === true) return true
-
+		if (isSymbol({row: numberRow - 1 , column: numberInfo.end, schematic }) === true) return true
+		
 		// diagonal left
 		// TODO: combine ifs
 		if (numberInfo.init > 0)
-			if (isSymbol(schematic[numberRow - 1][numberInfo.init - 1]) === true)
+			if (isSymbol({row: numberRow - 1 , column: numberInfo.init -1, schematic }) === true)
+			
 				return true
 
 		// diagonal rigth
 		// TODO: combine ifs
 		if (numberInfo.end < schematic[numberRow - 1].length)
-			if (isSymbol(schematic[numberRow - 1][numberInfo.end + 1]) === true)
+			if (isSymbol({row: numberRow - 1 , column: numberInfo.init +1, schematic }) === true)
 				return true
 	}
 
 	// check buttom row
 	if (numberRow + 1 <= schematic.length - 1) {
 		// down
-		if (isSymbol(schematic[numberRow + 1][numberInfo.init]) === true)
+		if (isSymbol({row: numberRow + 1 , column: numberInfo.init , schematic }) === true)
+		
 			return true
 
-		if (isSymbol(schematic[numberRow + 1][numberInfo.end]) === true) return true
+		if (isSymbol({row: numberRow + 1 , column: numberInfo.end , schematic }) === true) return true
 
 		// diagonal left
 		// TODO: combine ifs
 		if (numberInfo.init > 0)
-			if (isSymbol(schematic[numberRow + 1][numberInfo.init - 1]) === true)
+			if (isSymbol({row: numberRow + 1 , column: numberInfo.init - 1 , schematic }) === true)
 				return true
 
 		// diagonal right
 		// TODO: combine ifs
 		if (numberInfo.end < schematic[numberRow + 1].length)
-			if (isSymbol(schematic[numberRow + 1][numberInfo.end + 1]) === true)
+			if (isSymbol({row: numberRow + 1 , column: numberInfo.end + 1 , schematic }) === true)
 				return true
 	}
 
@@ -107,7 +115,16 @@ export const isNumber = (element: string) =>
 /**
  * If element is not a dot and not a number, is a symbol
  */
-const isSymbol = (element: string | undefined) => {
+const isSymbol = ({
+	row,
+	column,
+	schematic,
+}: {
+	row: number
+	column: number
+	schematic: any
+}) => {
+	const element: string | undefined = schematic[row][column]
 	if (element === undefined) {
 		console.log(Error('element is undefined'))
 		return false
