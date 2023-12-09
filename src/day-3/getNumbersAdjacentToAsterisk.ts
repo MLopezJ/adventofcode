@@ -15,23 +15,23 @@ export type AsteriskInfo = {
 export const getNumbersAdjacentToAsterisk = (
 	schematic: string[],
 ): AsteriskInfo[] => {
-
-    // tokenize input 
-
     const tokenizedSchematic = schematic.map((elment) => elment.split(''))
-
-    //console.log(tokenizedSchematic)
-
-    const numbersAdjacentToSymbol: number[] = []
 	tokenizedSchematic.forEach((token, index) => {
-		// get number
-		const tokensInRow = getToken('asterisk',token)
-        console.log(tokensInRow, index)
-
-		// get adjacent
+		const asteriskInRow = getToken('asterisk',token)
+		const numbersInRow = getToken('number',token)
 		
+		console.log(`line: ${index}`, {numbersInRow}, {asteriskInRow})
+
+		// [ [{numbers: [], asterisks: []}], [...]]
 	})
 
+	// TODO: for each asterisk, check if there is a number adjacent
+
+	
+	/**
+	 * if (hasAsteriskANumberAdjacent(asterisk, tokenizedSchematic, index) === true)
+	 */
+	
 
     
 	return [
