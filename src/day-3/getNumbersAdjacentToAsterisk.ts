@@ -17,10 +17,12 @@ export const getAdjacents = ({
 	asteriskPosition,
 	asteriskRow,
 	numbersInfo,
+	rowLenght
 }: {
 	asteriskPosition: number
 	asteriskRow: number
 	numbersInfo: NumberInfo[][]
+	rowLenght : number
 }): NumberInfo[] | any => {
 	const result = numbersInfo
 		.map((row, rowIndex) => {
@@ -46,7 +48,7 @@ export const getAdjacents = ({
 							}
 
 							// an asterisk is in the left to this position
-							if (asteriskPosition < 9 && info.init - 1 === asteriskPosition) {
+							if (asteriskPosition < (rowLenght -1) && info.init - 1 === asteriskPosition) {
 								/*
 								console.log(
 									'number ',
@@ -86,7 +88,7 @@ export const getAdjacents = ({
 							}
 
 							// an asterisk is diagonal left to this position
-							if (asteriskPosition < 9 && info.init - 1 === asteriskPosition) {
+							if (asteriskPosition < (rowLenght -1 ) && info.init - 1 === asteriskPosition) {
 								/*
 								console.log(
 									'number ',
@@ -128,7 +130,7 @@ export const getAdjacents = ({
 							}
 
 							// an asterisk is diagonal left to this position
-							if (asteriskPosition < 9 && info.init - 1 === asteriskPosition) {
+							if (asteriskPosition < (rowLenght -1 ) && info.init - 1 === asteriskPosition) {
 								/*
 								console.log(
 									'number ',
@@ -180,7 +182,7 @@ export const getNumbersAdjacentToAsterisk = (
 	schematic: string[],
 ): AsteriskInfo[] => {
 	const tokenizedSchematic = schematic.map((elment) => elment.split(''))
-
+	const rowLenght = tokenizedSchematic[0]?.length as number
 	const asterisks = tokenizedSchematic.map((row) => getToken('asterisk', row))
 	const numbers = tokenizedSchematic.map((row) => getToken('number', row))
 
@@ -193,6 +195,7 @@ export const getNumbersAdjacentToAsterisk = (
 							asteriskPosition: asterisk.init,
 							asteriskRow: index,
 							numbersInfo: numbers,
+							rowLenght 
 						})
 
 						if (numbersAdjacets !== undefined)
