@@ -1,6 +1,6 @@
 import { getToken, type NumberInfo } from './getTokens.js'
 
-type N = NumberInfo & { row: number }
+export type N = NumberInfo & { row: number }
 export type AsteriskInfo = {
 	numbers: N[]
 	asterisk: {
@@ -13,7 +13,7 @@ export type AsteriskInfo = {
  * Given the coordinates of the asterisk and the coordinates of all the numbers in the puzle,
  * return the adjacent numbers for that given asterisk
  */
-const getAdjacents = ({
+export const getAdjacents = ({
 	asteriskPosition,
 	asteriskRow,
 	numbersInfo,
