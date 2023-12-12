@@ -184,7 +184,6 @@ export const getNumbersAdjacentToAsterisk = (
 	const asterisks = tokenizedSchematic.map((row) => getToken('asterisk', row))
 	const numbers = tokenizedSchematic.map((row) => getToken('number', row))
 
-	// TODO: for each asterisk, check if there is a number adjacent
 	const info = asterisks
 		.map((row, index) => {
 			if (row.length > 0) {
@@ -208,40 +207,17 @@ export const getNumbersAdjacentToAsterisk = (
 						return undefined
 					})
 					.filter((element) => element !== undefined)
+					.reduce((p, c) => {
+						return { ...p, ...c }
+					})
 
-				if (x.length > 0) return x
-				return undefined
+				return x
 			}
 			return undefined
 		})
-		//.map((e) => console.log(e))
 		.filter((element) => element !== undefined)
+		// A gear is any * symbol that is adjacent to exactly two part numbers.
+		.filter((element) => element?.numbers.length === 2)
 
-	/**
-	 * if (hasAsteriskANumberAdjacent(asterisk, tokenizedSchematic, index) === true)
-	 */
-
-	return [
-		{
-			numbers: [
-				{ init: 0, end: 2, number: 467, row: 0 },
-				{ init: 2, end: 3, number: 35, row: 2 },
-			],
-			asterisk: {
-				column: 3,
-				row: 1,
-			},
-		},
-
-		{
-			numbers: [
-				{ init: 6, end: 8, number: 755, row: 7 },
-				{ init: 5, end: 7, number: 598, row: 9 },
-			],
-			asterisk: {
-				column: 5,
-				row: 8,
-			},
-		},
-	]
+	return info as unknown as AsteriskInfo[]
 }
