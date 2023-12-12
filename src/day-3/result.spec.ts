@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
 import { gearRatios, getEngineSchematic, getGears, sum } from './result.js'
-/*
+
 void describe('gearRatios', () => {
 	void it(`should sum all the part numbers of the engine schematic (easy)`, async () => {
 		const logs = await getEngineSchematic('testSchematic.txt')
@@ -11,8 +11,9 @@ void describe('gearRatios', () => {
 
 	void it(`should sum all the part numbers of the engine schematic (10 lines)`, async () => {
 		const logs = await getEngineSchematic('engineSchematic-10.txt')
-		
-		 expected: 
+
+		/**
+		  expected: 
 		    // 1
 			507,961, 668, 189, 906,
 			// 2 
@@ -33,16 +34,16 @@ void describe('gearRatios', () => {
 			463, 183, 961, 572, 618, 52, 205, 429,
 			// 10
 			204, 550, 628, 240, 588, 167, 776
-		
-
+		  */
 		const number = gearRatios(logs)
 		assert.equal(number, 34338)
 	})
 
 	void it(`should sum all the part numbers of the engine schematic (4 lines)`, async () => {
 		const logs = await getEngineSchematic('engineSchematic-4.txt')
-		
-		 expected: 
+
+		/**
+		  expected: 
 		    // 1
 			507,961, 668, 189, 906,
 			// 2 
@@ -51,13 +52,13 @@ void describe('gearRatios', () => {
 			464, 208, 260, 967, 38, 692, 676, 247, 652, 74, 
 			// 4
 			454, 859, 267,  
-		
+		  */
+
 		const number = gearRatios(logs)
 
 		assert.equal(number, 11761)
 	})
 })
-
 
 void describe('sum', () => {
 	for (const [list, expected] of [
@@ -70,16 +71,13 @@ void describe('sum', () => {
 		})
 	}
 })
-*/
 
 void describe('getGears', () => {
-	/*
 	void it(`should return gears from schematic (part II of issue)`, async () => {
 		const logs = await getEngineSchematic('partII.txt')
 		const result = getGears(logs)
 		assert.equal(result, 467835)
 	})
-	*/
 
 	void it(`should return gears from schematic (3 lines) (part II of issue)`, async () => {
 		const logs = await getEngineSchematic('engineSchematic-3.txt')
