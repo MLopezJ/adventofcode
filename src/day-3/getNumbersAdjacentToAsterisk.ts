@@ -186,6 +186,8 @@ export const getNumbersAdjacentToAsterisk = (
 	const asterisks = tokenizedSchematic.map((row) => getToken('asterisk', row))
 	const numbers = tokenizedSchematic.map((row) => getToken('number', row))
 
+	console.log(asterisks)
+
 	const info = asterisks
 		.map((row, index) => {
 			if (row.length > 0) {
