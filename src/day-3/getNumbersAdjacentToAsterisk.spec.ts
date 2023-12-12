@@ -34,6 +34,11 @@ void describe('getNumbersAdjacentToAsterisk', () => {
 			},
 
 			{
+				numbers: [{ init: 0, end: 2, number: 617, row: 4 }],
+				asterisk: { column: 3, row: 4 },
+			},
+
+			{
 				numbers: [
 					{ init: 6, end: 8, number: 755, row: 7 },
 					{ init: 5, end: 7, number: 598, row: 9 },

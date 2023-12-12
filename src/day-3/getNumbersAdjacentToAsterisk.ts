@@ -216,8 +216,6 @@ export const getNumbersAdjacentToAsterisk = (
 			return undefined
 		})
 		.filter((element) => element !== undefined)
-		// A gear is any * symbol that is adjacent to exactly two part numbers.
-		.filter((element) => element?.numbers.length === 2)
 
 	return info as unknown as AsteriskInfo[]
 }

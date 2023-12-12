@@ -52,14 +52,14 @@ export const result = async () => {
 export const getGears = (logs: string[]): number => {
 	const numbersAdjacentToAsterisk = getNumbersAdjacentToAsterisk(logs)
 
-	const numbers = numbersAdjacentToAsterisk.map((element) => {
-		return element.numbers.map((number) => number.number)
-	})
-
-	// TODO: filter * with more or less than 2 numbers
+	const numbers = numbersAdjacentToAsterisk
+		// A gear is any * symbol that is adjacent to EXACTLY two part numbers.
+		.filter((element) => element?.numbers.length === 2)
+		.map((element) => {
+			return element.numbers.map((number) => number.number)
+		})
 
 	const result = numbers.reduce((previus: number, current: number[]) => {
-		// A gear is any * symbol that is adjacent to EXACTLY two part numbers.
 		const multp = (current[0] as number) * (current[1] as number)
 		return multp + previus
 	}, 0)
