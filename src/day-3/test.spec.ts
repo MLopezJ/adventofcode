@@ -21,7 +21,6 @@ void describe('remove matrix', () => {
                 list.push(element)
             })
         })
-        console.log(list)
 
 		const output = [
 			{ asterisk: '1' },
