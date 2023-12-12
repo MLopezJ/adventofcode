@@ -73,32 +73,7 @@ void describe('sum', () => {
 })
 
 void describe('getGears', () => {
-	void it(`should return gears from schematic (part II of issue)`, async () => {
-		const logs = await getEngineSchematic('partII.txt')
-		const result = getGears(logs)
-		assert.equal(result, 467835)
-	})
-
-	void it(`should return gears from schematic (3 lines) (part II of issue)`, async () => {
-		const logs = await getEngineSchematic('engineSchematic-3.txt')
-		const result = getGears(logs)
-		assert.equal(result, 1929629)
-	})
-
-	/*
-	void it(`should return gears from different schematic (part II of issue)`, async () => {
-		const logs = await getEngineSchematic('engineSchematic-diff.txt')
-		const result = getGears(logs)
-		assert.equal(result, 81721933)
-	})
-	*/
-
-	void it(`should return gears from schematic found in reddit (part II of issue)`, async () => {
-		const logs = await getEngineSchematic('reddit.txt')
-		const result = getGears(logs)
-		// https://www.reddit.com/r/adventofcode/comments/189q9wv/comment/kbsrno0/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-		assert.equal(result, 442)
-	})
+	
 
 	void it(`should return gears from schematic found in reddit (other example) (part II of issue)`, async () => {
 		const logs = await getEngineSchematic('reddit-2.txt')

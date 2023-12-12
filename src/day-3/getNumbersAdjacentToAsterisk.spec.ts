@@ -7,7 +7,7 @@ import {
 import type { NumberInfo } from './getTokens.js'
 
 void describe('getNumbersAdjacentToAsterisk', () => {
-	/*
+	
 	void it(`should return a list with numbers adjecents to any '*' symbol`, () => {
 		const schematic = [
 			'467..114..',
@@ -74,7 +74,6 @@ void describe('getNumbersAdjacentToAsterisk', () => {
 		const result = getNumbersAdjacentToAsterisk(schematic)
 		assert.deepEqual(result.length, 11)
 	})
-	*/
 
 	void it(`should conver case when asterisk is adjacent to more than 2 numbers`, () => {
 		const schematic = [
@@ -101,7 +100,7 @@ void describe('getNumbersAdjacentToAsterisk', () => {
 			{
 				numbers: [
 					{ init: 9, end: 10, number: 12, row: 0 },
-					{ init: 10, end: 1, number: 56, row: 2 },
+					{ init: 10, end: 11, number: 56, row: 2 },
 				],
 				asterisk: { column: 11, row: 1 },
 			},
@@ -109,7 +108,6 @@ void describe('getNumbersAdjacentToAsterisk', () => {
 	})
 })
 
-/*
 void describe('getAdjacents', () => {
 	for (const [input, expected] of [
 		[
@@ -144,6 +142,39 @@ void describe('getAdjacents', () => {
 				{ init: 2, end: 3, number: 35, row: 2 },
 			],
 		],
+
+		/**
+		 	2.2......12.
+			.*.........*
+			1.1..503+.56
+		 */
+		[
+			{
+				asteriskPosition: 1,
+				asteriskRow: 1,
+				numbersInfo: [
+					[
+						{ init: 0, end: 0, number: 2 },
+						{ init: 2, end: 2, number: 2 },
+						{ init: 9, end: 10, number: 12 },
+					],
+					[],
+					[
+						{ init: 0, end: 0, number: 1 },
+						{ init: 2, end: 2, number: 1 },
+						{ init: 5, end: 7, number: 503 },
+						{ init: 10, end: 11, number: 56 },
+					],
+				],
+				rowLenght: 12,
+			},
+			[
+				{ init: 0, end: 0, number: 2, row: 0 },
+				{ init: 2, end: 2, number: 2, row: 0 },
+				{ init: 0, end: 0, number: 1, row: 2 },
+				{ init: 2, end: 2, number: 1, row: 2 },
+			],
+		],
 	] as [
 		{
 			asteriskPosition: number
@@ -158,5 +189,3 @@ void describe('getAdjacents', () => {
 		})
 	}
 })
-
-*/

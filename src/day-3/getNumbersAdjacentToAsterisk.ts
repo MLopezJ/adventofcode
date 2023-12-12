@@ -162,26 +162,16 @@ export const getAdjacents = ({
 		})
 		.filter((element) => element !== undefined)
 
-	//console.log(result)
+	// remove matrix format  
+	const list: ({ row: number; number: number; init: number; end: number } | undefined)[] = []
+	result.forEach((row) => {
+		if (row !== undefined)
+		row.forEach((element) => {
+			list.push(element)
+		})
+	})
 
-	// remove matrix format from result
-	return result.reduce((previus, current) => {
-		if (previus === undefined) {
-			return [
-				current?.reduce((p, c) => {
-					return { ...p, ...c }
-				}),
-			]
-		}
-
-		const temp = previus
-		temp.push(
-			current?.reduce((p, c) => {
-				return { ...p, ...c }
-			}),
-		)
-		return temp
-	}, undefined)
+	return list
 }
 
 /**
