@@ -22,7 +22,91 @@ export const getAdjacents = ({
 	asteriskRow: number
 	numbersInfo: NumberInfo[][]
 }): NumberInfo[] | any => {
-	//console.log(asteriskPosition, asteriskRow, numbersInfo)
+	numbersInfo.map((row, rowIndex) => {
+		if (row.length > 0) {
+			row.map((info) => {
+				/**
+				 * because of adjacent definition, make no sense to check more than
+				 * the row up and down to the asterisk
+				 */
+
+				// same line
+				if (rowIndex === asteriskRow) {
+					// an asterisk is in the right to this position
+					if (asteriskPosition > 0 && info.end + 1 === asteriskPosition) {
+						console.log(
+							'number ',
+							info.number,
+							' is same row. In the right there is an asterisk',
+						)
+					}
+
+					// an asterisk is in the left to this position
+					if (asteriskPosition < 9 && info.init - 1 === asteriskPosition) {
+						console.log(
+							'number ',
+							info.number,
+							' is same row. In the left there is an asterisk',
+						)
+					}
+				}
+
+				// taking the number as reference, the asterisk is 1 line down
+				if (asteriskRow > rowIndex && asteriskRow - rowIndex === 1) {
+					// an asterisk is down to this position
+					if (info.init <= asteriskPosition && info.end >= asteriskPosition) {
+						console.log('number ', info.number, '.  Down there is an asterisk')
+					}
+
+					// an asterisk is diagonal rigth to this position
+					if (asteriskPosition > 0 && info.end + 1 === asteriskPosition) {
+						console.log(
+							'number ',
+							info.number,
+							'. an asterisk is diagonal rigth (down) to this position',
+						)
+					}
+
+					// an asterisk is diagonal left to this position
+					if (asteriskPosition < 9 && info.init - 1 === asteriskPosition) {
+						console.log(
+							'number ',
+							info.number,
+							' is diagonal left (down) to this position',
+						)
+					}
+				}
+
+				// taking the number as reference, the asterisk is 1 line up
+				if (rowIndex > asteriskRow && rowIndex - asteriskRow === 1) {
+					// an asterisk is up to this position
+					if (info.init <= asteriskPosition && info.end >= asteriskPosition) {
+						console.log('number ', info.number, '.  Up there is an asterisk')
+					}
+
+					// an asterisk is diagonal rigth to this position
+					if (asteriskPosition > 0 && info.end + 1 === asteriskPosition) {
+						console.log(
+							'number ',
+							info.number,
+							'. an asterisk is diagonal rigth (up) to this position',
+						)
+					}
+
+					// an asterisk is diagonal left to this position
+					if (asteriskPosition < 9 && info.init - 1 === asteriskPosition) {
+						console.log(
+							'number ',
+							info.number,
+							' is diagonal left (down) to this position',
+						)
+					}
+					
+				}
+			})
+		}
+	})
+
 
 	if (asteriskRow === 1)
 		return [
@@ -35,7 +119,7 @@ export const getAdjacents = ({
 			{ init: 6, end: 8, number: 755, row: 7 },
 			{ init: 5, end: 7, number: 598, row: 9 },
 		]
-	
+
 	return undefined
 }
 
@@ -82,7 +166,7 @@ export const getNumbersAdjacentToAsterisk = (
 		})
 		//.map((e) => console.log(e))
 		.filter((element) => element !== undefined)
- 
+
 	/**
 	 * if (hasAsteriskANumberAdjacent(asterisk, tokenizedSchematic, index) === true)
 	 */
