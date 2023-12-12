@@ -7,7 +7,6 @@ import {
 import type { NumberInfo } from './getTokens.js'
 
 void describe('getNumbersAdjacentToAsterisk', () => {
-	/*
 	void it(`should return a list with numbers adjecents to any '*' symbol`, () => {
 		const schematic = [
 			'467..114..',
@@ -63,7 +62,6 @@ void describe('getNumbersAdjacentToAsterisk', () => {
 
 		assert.deepEqual(getNumbersAdjacentToAsterisk(schematic), [])
 	})
-	*/
 
 	void it(`should return a list with numbers adjecents to '*' symbol when schematic is same as real example`, () => {
 		const schematic = [
@@ -77,7 +75,6 @@ void describe('getNumbersAdjacentToAsterisk', () => {
 	})
 })
 
-/*
 void describe('getAdjacents', () => {
 	for (const [input, expected] of [
 		[
@@ -105,7 +102,7 @@ void describe('getAdjacents', () => {
 						{ init: 5, end: 7, number: 598 },
 					],
 				],
-				rowLenght: 10
+				rowLenght: 10,
 			},
 			[
 				{ init: 0, end: 2, number: 467, row: 0 },
@@ -116,15 +113,13 @@ void describe('getAdjacents', () => {
 		{
 			asteriskPosition: number
 			asteriskRow: number
-			numbersInfo: NumberInfo[][],
+			numbersInfo: NumberInfo[][]
 			rowLenght: number
 		},
-		{ init: number; end: number; number: number; row: number, }[],
+		{ init: number; end: number; number: number; row: number }[],
 	][]) {
 		void it(`should return adjacents number to asterisk in position row: ${input.asteriskRow} column: ${input.asteriskPosition} `, () => {
 			assert.deepEqual(getAdjacents(input), expected)
 		})
 	}
 })
-
-*/
