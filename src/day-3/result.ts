@@ -49,7 +49,6 @@ export const result = async () => {
 	console.log(`the sum of all of the gear ratios in the engine schematic is ${gears}`)
 }
 
-//result()
 
 /**
  * A gear is any * symbol that is adjacent to exactly two part numbers.
