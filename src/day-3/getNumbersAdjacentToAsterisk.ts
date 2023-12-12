@@ -187,7 +187,7 @@ export const getNumbersAdjacentToAsterisk = (
 	const info = asterisks
 		.map((row, index) => {
 			if (row.length > 0) {
-				const x = row
+				const numbersInRow = row
 					.map((asterisk) => {
 						const numbersAdjacets = getAdjacents({
 							asteriskPosition: asterisk.init,
@@ -211,7 +211,7 @@ export const getNumbersAdjacentToAsterisk = (
 						return { ...p, ...c }
 					})
 
-				return x
+				return numbersInRow
 			}
 			return undefined
 		})
