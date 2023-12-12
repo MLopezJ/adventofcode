@@ -40,10 +40,13 @@ export const gearRatios = (logs: string[]) => {
 export const result = async () => {
 	const logs = await getEngineSchematic('engineSchematic.txt')
 	const number = gearRatios(logs)
+	const gears =  getGears(logs)
 
 	console.log(
 		`the sum of all of the part numbers in the engine schematic is ${number}`,
 	)
+
+	console.log(`the sum of all of the gear ratios in the engine schematic is ${gears}`)
 }
 
 /**
