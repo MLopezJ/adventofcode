@@ -190,19 +190,19 @@ export const getNumbersAdjacentToAsterisk = (
 			if (row.length > 0) {
 				const x = row
 					.map((asterisk) => {
-						const r = getAdjacents({
+						const numbersAdjacets = getAdjacents({
 							asteriskPosition: asterisk.init,
 							asteriskRow: index,
 							numbersInfo: numbers,
 						})
 
-						if (r !== undefined)
+						if (numbersAdjacets !== undefined)
 							return {
 								asterisk: {
 									column: asterisk.init,
 									row: index,
 								},
-								numbers: r,
+								numbers: numbersAdjacets,
 							}
 
 						return undefined
