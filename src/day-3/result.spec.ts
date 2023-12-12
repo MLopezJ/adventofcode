@@ -76,4 +76,10 @@ void describe('getGears', () => {
 		const result = getGears(logs)
 		assert.equal(result, 467835)
 	})
+
+	void it(`should return gears from schematic (3 lines) (part II of issue)`, async () => {
+		const logs = await getEngineSchematic('engineSchematic-3.txt')
+		const result = getGears(logs)
+		assert.equal(result, 1929629)
+	})
 })

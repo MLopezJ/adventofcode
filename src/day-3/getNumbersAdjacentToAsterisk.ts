@@ -208,6 +208,7 @@ export const getNumbersAdjacentToAsterisk = (
 					})
 					.filter((element) => element !== undefined)
 					.reduce((p, c) => {
+						//console.log(p, c)
 						return { ...p, ...c }
 					})
 
