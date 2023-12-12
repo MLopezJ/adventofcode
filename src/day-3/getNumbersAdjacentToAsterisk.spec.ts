@@ -7,7 +7,7 @@ import {
 import type { NumberInfo } from './getTokens.js'
 
 void describe('getNumbersAdjacentToAsterisk', () => {
-	void it(`should return a list with numbers adjecents to any symbol`, () => {
+	void it(`should return a list with numbers adjecents to any '*' symbol`, () => {
 		const schematic = [
 			'467..114..',
 			'...*......',
@@ -49,6 +49,18 @@ void describe('getNumbersAdjacentToAsterisk', () => {
 				},
 			},
 		])
+	})
+
+	void it(`should conver case when input has not asterisks symbols`, () => {
+		const schematic = [
+			'467..114.@',
+			'...!......',
+			'..35..633.',
+			'.+....#...',
+			'617^.....=',
+		]
+
+		assert.deepEqual(getNumbersAdjacentToAsterisk(schematic), [])
 	})
 })
 
