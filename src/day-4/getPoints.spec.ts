@@ -17,9 +17,14 @@ void describe('getPoints', () => {
 	})
 })
 
+export type Card = {
+	winningNumbers: number[],
+	yourNumbers: number[]
+}
+
 /**
  * Given a list of cards, identify wining numbers and sum their points
  */
-const getPoints = (cards: any) => {
+const getPoints = (cards: Card[]) => {
 	return 13
 }
