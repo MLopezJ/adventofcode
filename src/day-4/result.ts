@@ -26,7 +26,38 @@ export const getPuzzle = async (file: string) => {
  */
 export const transformToGameType = (input: string): Card => {
 	const text = input.split(':')
+	const temp = text[1]?.split('|')
 
-	console.log(text)
-	return input as unknown as Card
+	let winningNumbers = [] as number[]
+	let yourNumbers = [] as number[]
+
+	if (temp !== undefined) {
+		if (temp[0] !== undefined)
+			winningNumbers = fromStringToArrayOfNumber(temp[0])
+		if (temp[1] !== undefined) yourNumbers = fromStringToArrayOfNumber(temp[1])
+	}
+
+	return {
+		winningNumbers,
+		yourNumbers,
+	}
+}
+
+/**
+ * Transform string to array of numbers
+ */
+const fromStringToArrayOfNumber = (input: string): number[] => {
+	const result = input
+		.split(' ')
+		.map((element) => {
+			if (element === '0') return 0
+			const number = Number(element)
+			if (number === 0) return undefined
+			return number
+		})
+		.filter((element) => element !== undefined)
+
+	if (result.length === 0) return []
+
+	return result as number[]
 }

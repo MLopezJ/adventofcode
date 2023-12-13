@@ -29,7 +29,7 @@ void describe('transformToGameType', () => {
 		],
 	] as [{ id: number; text: string }, any][]) {
 		void it(`should transform card ${input.id} in game format type`, () => {
-			assert.equal(transformToGameType(input.text), expected)
+			assert.deepEqual(transformToGameType(input.text), expected)
 		})
 	}
 })
