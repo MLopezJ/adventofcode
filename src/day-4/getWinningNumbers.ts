@@ -1,4 +1,4 @@
-import type { Card } from './getPoints.spec'
+import type { Card } from "./result.js"
 
 /**
  * Return numbers from "yourNumbers" that appear in "winningNumbers"

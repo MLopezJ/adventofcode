@@ -1,7 +1,8 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
 import { getWinningNumbers } from './getWinningNumbers.js'
-import type { Card } from './getPoints.spec.js'
+import type { Card } from './result.js'
+
 
 void describe('getWinningNumbers', () => {
 	for (const [input, expected] of [

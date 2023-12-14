@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import type { Card } from './getPoints.spec'
+import { getWinningNumbers } from './getWinningNumbers.js'
+import { getPoints } from './getPoints.js'
 
 /**
  * Get input data
@@ -60,4 +61,25 @@ const fromStringToArrayOfNumber = (input: string): number[] => {
 	if (result.length === 0) return []
 
 	return result as number[]
+}
+
+export type Card = {
+	winningNumbers: number[]
+	yourNumbers: number[]
+}
+
+/**
+ * Given a list of cards, identify wining numbers and sum their points
+ */
+export const result = (cards: Card[]) => {
+	// get winning numbers
+	const winningNumbers = cards.map((card) => getWinningNumbers(card)).filter(winning => winning !== undefined)
+
+	// get points from winning numbers
+	const points = winningNumbers.map((winning) => getPoints(winning))
+	
+	// sum points
+	const result = points.reduce((p, c) => p + c)
+
+	return result
 }
