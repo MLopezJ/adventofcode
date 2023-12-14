@@ -39,7 +39,7 @@ void describe('getPoints', () => {
 		},
 		number,
 	][]) {
-		void it(`should sum points from winning numbers. Card`, () => {
+		void it(`should sum points from winning numbers. Card ${input.id}`, () => {
 			assert.equal(getPoints(input.matches), expected)
 		})
 	}
