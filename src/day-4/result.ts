@@ -92,7 +92,7 @@ export type minCardInfo = {
 	copies: number
 }
 
-type Scratchcard = {
+export type Scratchcard = {
 	numbers: Card // winning number, your number
 } & minCardInfo
 
