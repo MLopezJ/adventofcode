@@ -1,18 +1,20 @@
-
 /**
- * Each element from input list is considerr as a match.
+ * Each element from input list is consider as a match.
  * The first match makes the card worth one point.
- * Each match after the first doubles the point value of that card.
+ * After the first match, the card doubles the points
+ * 
  */
 export const getPoints = (winningNumbers: number[]): number => {
-	// [48, 83, 17, 86]
-	if (winningNumbers.length === 4) return 8
+	const list = winningNumbers
 
-	// [32 , 61] && [1 , 21]
-	if (winningNumbers.length === 2) return 2
+	let result = 0
+	while (list.length > 0) {
+		if (result === 0) result = 1
+		else {
+			result = result + result
+		}
+		list.pop()
+	}
 
-	// [84]
-	if (winningNumbers.length === 1) return 1
-
-	return 0
+	return result
 }
