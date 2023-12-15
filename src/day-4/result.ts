@@ -87,6 +87,26 @@ export const result = (cards: Card[]) => {
 }
 
 /**
+ * Given a list of scratchcards,
+ * Identify if there are numbers of "winning numbers" in "your numbers". It is called "matches".
+ *
+ * You won a copy of scratchcard per each match you have in the current scratchcard.
+ * So, if card 10 were to have 5 matching numbers, you would win one copy each of cards 11, 12, 13, 14, and 15.
+ *
+ * For next scratchcard, you have to consider the scratchcard but also copies won in previous card.
+ * Copies of scratchcards behave as a normal scratchcard.
+ *
+ * This process repeats until none of the copies cause you to win any more cards.
+ *
+ * (Cards will never make you copy a card past the end of the table.)
+ *
+ */
+export const partII = (cards: Card[]): number => {
+	const scratchcards = 30
+	return scratchcards
+}
+
+/**
  * Answer of the issue
  */
 export const main = async () => {
