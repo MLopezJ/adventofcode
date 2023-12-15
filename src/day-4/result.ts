@@ -19,6 +19,27 @@ export const getPuzzle = async (file: string) => {
 }
 
 /**
+ * Get input data
+ * // TODO: improve this
+ */
+export const getPuzzlePartII = async (file: string) => {
+	const baseDir = process.cwd()
+	const subDir = (...tree: string[]): string => path.join(baseDir, ...tree)
+	return readFile(subDir('src/day-4', `${file}`), 'utf-8').then((result) => {
+		return result
+			.toString()
+			.split('\n')
+			.reduce((previous, current) => {
+				const temp = transformToGameTypePartII(current)
+
+				if (previous === undefined) return { ...temp }
+
+				return { ...previous, ...temp }
+			}, undefined)
+	})
+}
+
+/**
  * Scratchcards is a game where cards has two lists of numbers separated by a vertical bar (|):
  * 1- a list of winning numbers
  * 2- a list of numbers you have.
@@ -55,8 +76,13 @@ export const transformToGameType = (input: string): Card => {
  */
 export const transformToGameTypePartII = (input: string): Scratchcards => {
 	const text = input.split(':')
-	
-	const id = Number(text[0]?.split(' ')[1])
+
+	const maybeId = text[0]?.split(' ')
+	let id = 0
+	if (maybeId !== undefined) {
+		id = Number(maybeId[maybeId?.length - 1])
+	}
+
 	const temp = text[1]?.split('|')
 
 	let winningNumbers = [] as number[]
@@ -168,8 +194,11 @@ export const partII = (cards: Scratchcards): number => {
 export const main = async () => {
 	const file = `puzzle.txt`
 	const logs = await getPuzzle(file)
+	const logPartII = await getPuzzlePartII(`puzzle.txt`)
 	const points = result(logs)
-	console.log(`There are a total of ${points} in ${file}`)
+	const scratchcardsTotal = partII(logPartII)
+	console.log(`There are a total of ${points} points in ${file}`)
+	console.log(`There are a total ${scratchcardsTotal} cards in ${file}`)
 }
 
-// main()
+main()

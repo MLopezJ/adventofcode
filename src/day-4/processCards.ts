@@ -47,6 +47,7 @@ export const processCards = (cards: Scratchcards): Scratchcards => {
 					 */
 					const copies = currentCard.copies + 1
 
+                    //console.log(indexOfCard, (cards['100']))
 					/**
 					 * Sum copies to targered card
 					 */
