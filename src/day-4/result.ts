@@ -86,6 +86,17 @@ export const result = (cards: Card[]) => {
 	return result
 }
 
+type Scratchcard = {
+	numbers: Card // winning number, your number
+	matches: number
+	copies: number
+}
+
+type Scratchcards = Record<number, Scratchcard>
+
+const numberRange = (start: number, end: number) =>
+	new Array(end - start).fill(undefined).map((d, i) => i + start)
+
 /**
  * Given a list of scratchcards,
  * Identify if there are numbers of "winning numbers" in "your numbers". It is called "matches".
@@ -101,9 +112,78 @@ export const result = (cards: Card[]) => {
  * (Cards will never make you copy a card past the end of the table.)
  *
  */
-export const partII = (cards: Card[]): number => {
-	const scratchcards = 30
-	return scratchcards
+export const partII = (cards: Scratchcards): number => {
+	const scratchcards = processCards(cards)
+
+	const numberOfInstaces = Object.values(scratchcards).reduce(
+		(previous, current) => {
+			/**
+			 * The number of instances in a card is the number of copies + the original
+			 */
+			const instances = current.copies + 1
+			return previous + instances
+		},
+		0,
+	)
+
+	return numberOfInstaces
+}
+
+/**
+ * Iterate over the cards and return the cards with the amount of copies won in the game
+ */
+const processCards = (cards: Scratchcards): Scratchcards => {
+	/*
+Object.entries(cards).map((element) => {
+		const [id, card] = element
+		const numberOfMatches = getWinningNumbers(card.numbers).length
+		;(cards[Number(id)] as Scratchcard).matches = numberOfMatches
+
+		const init = Number(id) + 1
+		const end = numberOfMatches + init
+		const range = numberRange(init, end)
+		if (range.length > 0) {
+			range.map((element) => {
+				;(cards[element] as Scratchcard).copies += 1
+			})
+		}
+	})
+	*/
+	return {
+		'1': {
+			numbers: {
+				winningNumbers: [],
+				yourNumbers: [],
+			},
+			matches: 4,
+			copies: 0,
+		},
+		'2': {
+			numbers: { winningNumbers: [], yourNumbers: [] },
+			matches: 2,
+			copies: 1,
+		},
+		'3': {
+			numbers: { winningNumbers: [], yourNumbers: [] },
+			matches: 2,
+			copies: 3,
+		},
+		'4': {
+			numbers: { winningNumbers: [], yourNumbers: [] },
+			matches: 1,
+			copies: 7,
+		},
+		'5': {
+			numbers: { winningNumbers: [], yourNumbers: [] },
+			matches: 0,
+			copies: 13,
+		},
+		'6': {
+			numbers: { winningNumbers: [], yourNumbers: [] },
+			matches: 0,
+			copies: 0,
+		},
+	}
 }
 
 /**
