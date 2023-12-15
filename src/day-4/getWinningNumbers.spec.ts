@@ -3,7 +3,6 @@ import assert from 'node:assert/strict'
 import { getWinningNumbers } from './getWinningNumbers.js'
 import type { Card } from './result.js'
 
-
 void describe('getWinningNumbers', () => {
 	for (const [input, expected] of [
 		[
@@ -14,7 +13,7 @@ void describe('getWinningNumbers', () => {
 					yourNumbers: [83, 86, 6, 31, 17, 9, 48, 53],
 				},
 			},
-			[48, 83, 17, 86],
+			[48, 83, 86, 17],
 		],
 
 		[
@@ -58,7 +57,7 @@ void describe('getWinningNumbers', () => {
 					yourNumbers: [88, 30, 70, 12, 93, 22, 82, 36],
 				},
 			},
-			undefined,
+			[],
 		],
 
 		[
@@ -69,7 +68,7 @@ void describe('getWinningNumbers', () => {
 					yourNumbers: [74, 77, 10, 23, 35, 67, 36, 11],
 				},
 			},
-			undefined,
+			[],
 		],
 	] as [
 		{
