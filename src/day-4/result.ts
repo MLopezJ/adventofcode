@@ -73,13 +73,27 @@ export type Card = {
  */
 export const result = (cards: Card[]) => {
 	// get winning numbers
-	const winningNumbers = cards.map((card) => getWinningNumbers(card)).filter(winning => winning !== undefined)
+	const winningNumbers = cards
+		.map((card) => getWinningNumbers(card))
+		.filter((winning) => winning !== undefined)
 
 	// get points from winning numbers
 	const points = winningNumbers.map((winning) => getPoints(winning))
-	
+
 	// sum points
 	const result = points.reduce((p, c) => p + c)
 
 	return result
 }
+
+/**
+ * Answer of the issue
+ */
+export const main = async () => {
+	const file = `puzzle.txt`
+	const logs = await getPuzzle(file)
+	const points = result(logs)
+	console.log(`There are a total of ${points} in ${file}`)
+}
+
+// main()

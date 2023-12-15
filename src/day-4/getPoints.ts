@@ -4,7 +4,7 @@
  * After the first match, the card doubles the points
  * 
  */
-export const getPoints = (winningNumbers: number[]): number => {
+export const getPoints = (winningNumbers: (number | undefined)[]): number => {
 	const list = winningNumbers
 
 	let result = 0
