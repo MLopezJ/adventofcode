@@ -29,7 +29,7 @@ export const getPuzzlePartII = async (file: string) => {
 		return result
 			.toString()
 			.split('\n')
-			.reduce((previous, current) => {
+			.reduce((previous: Scratchcards | undefined, current) => {
 				const temp = transformToGameTypePartII(current)
 
 				if (previous === undefined) return { ...temp }
@@ -195,10 +195,13 @@ export const main = async () => {
 	const file = `puzzle.txt`
 	const logs = await getPuzzle(file)
 	const logPartII = await getPuzzlePartII(`puzzle.txt`)
+
 	const points = result(logs)
-	const scratchcardsTotal = partII(logPartII)
 	console.log(`There are a total of ${points} points in ${file}`)
-	console.log(`There are a total ${scratchcardsTotal} cards in ${file}`)
+	if (logPartII !== undefined) {
+		const scratchcardsTotal = partII(logPartII)
+		console.log(`There are a total ${scratchcardsTotal} cards in ${file}`)
+	}
 }
 
 main()
