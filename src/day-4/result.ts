@@ -87,16 +87,11 @@ export const result = (cards: Card[]) => {
 	return result
 }
 
-export type minCardInfo = {
+export type Scratchcard = {
+	numbers: Card // winning number, your number,
 	matches: number
 	copies: number
 }
-
-export type Scratchcard = {
-	numbers: Card // winning number, your number
-} & minCardInfo
-
-
 
 export type Scratchcards = Record<number, Scratchcard>
 
