@@ -46,6 +46,41 @@ export const transformToGameType = (input: string): Card => {
 }
 
 /**
+ * Scratchcards is a game where cards has two lists of numbers separated by a vertical bar (|):
+ * 1- a list of winning numbers
+ * 2- a list of numbers you have.
+ *
+ * Input (a string) has the following format:
+ *  'Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53'
+ */
+export const transformToGameTypePartII = (input: string): Scratchcards => {
+	const text = input.split(':')
+	
+	const id = Number(text[0]?.split(' ')[1])
+	const temp = text[1]?.split('|')
+
+	let winningNumbers = [] as number[]
+	let yourNumbers = [] as number[]
+
+	if (temp !== undefined) {
+		if (temp[0] !== undefined)
+			winningNumbers = fromStringToArrayOfNumber(temp[0])
+		if (temp[1] !== undefined) yourNumbers = fromStringToArrayOfNumber(temp[1])
+	}
+
+	return {
+		[id]: {
+			numbers: {
+				winningNumbers,
+				yourNumbers,
+			}, // winning number, your number,
+			matches: 0,
+			copies: 0,
+		},
+	}
+}
+
+/**
  * Transform string to array of numbers
  */
 const fromStringToArrayOfNumber = (input: string): number[] => {
@@ -126,8 +161,6 @@ export const partII = (cards: Scratchcards): number => {
 
 	return numberOfInstaces
 }
-
-
 
 /**
  * Answer of the issue
