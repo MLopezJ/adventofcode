@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { getWinningNumbers } from './getWinningNumbers.js'
 import { getPoints } from './getPoints.js'
+import { processCards } from './processCards.js'
 
 /**
  * Get input data
@@ -86,16 +87,18 @@ export const result = (cards: Card[]) => {
 	return result
 }
 
-type Scratchcard = {
-	numbers: Card // winning number, your number
+export type minCardInfo = {
 	matches: number
 	copies: number
 }
 
-type Scratchcards = Record<number, Scratchcard>
+type Scratchcard = {
+	numbers: Card // winning number, your number
+} & minCardInfo
 
-const numberRange = (start: number, end: number) =>
-	new Array(end - start).fill(undefined).map((d, i) => i + start)
+
+
+export type Scratchcards = Record<number, Scratchcard>
 
 /**
  * Given a list of scratchcards,
@@ -129,62 +132,7 @@ export const partII = (cards: Scratchcards): number => {
 	return numberOfInstaces
 }
 
-/**
- * Iterate over the cards and return the cards with the amount of copies won in the game
- */
-const processCards = (cards: Scratchcards): Scratchcards => {
-	/*
-Object.entries(cards).map((element) => {
-		const [id, card] = element
-		const numberOfMatches = getWinningNumbers(card.numbers).length
-		;(cards[Number(id)] as Scratchcard).matches = numberOfMatches
 
-		const init = Number(id) + 1
-		const end = numberOfMatches + init
-		const range = numberRange(init, end)
-		if (range.length > 0) {
-			range.map((element) => {
-				;(cards[element] as Scratchcard).copies += 1
-			})
-		}
-	})
-	*/
-	return {
-		'1': {
-			numbers: {
-				winningNumbers: [],
-				yourNumbers: [],
-			},
-			matches: 4,
-			copies: 0,
-		},
-		'2': {
-			numbers: { winningNumbers: [], yourNumbers: [] },
-			matches: 2,
-			copies: 1,
-		},
-		'3': {
-			numbers: { winningNumbers: [], yourNumbers: [] },
-			matches: 2,
-			copies: 3,
-		},
-		'4': {
-			numbers: { winningNumbers: [], yourNumbers: [] },
-			matches: 1,
-			copies: 7,
-		},
-		'5': {
-			numbers: { winningNumbers: [], yourNumbers: [] },
-			matches: 0,
-			copies: 13,
-		},
-		'6': {
-			numbers: { winningNumbers: [], yourNumbers: [] },
-			matches: 0,
-			copies: 0,
-		},
-	}
-}
 
 /**
  * Answer of the issue
