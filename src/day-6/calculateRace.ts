@@ -1,6 +1,6 @@
 export type Race = {
 	time: number
-	distance: number
+	record: number
 }
 
 type TravelOption = {
@@ -49,6 +49,13 @@ const getTravelOptions = (time: number): TravelOption[] => {
             distance: 12
         },
 
+        // Hold the button for 5 milliseconds, causing the boat to travel a total of 10 millimeters.
+        {
+            speed: 5,
+            movingTime: 2,
+            distance: 10
+        },
+
         // Hold the button for 6 milliseconds, causing the boat to travel a total of 6 millimeters.
         {
             speed: 6,
@@ -77,9 +84,8 @@ export const calculateRace = (race: Race): number => {
     const travelOptions = getTravelOptions(race.time)
 
     // winning options
+    const winningOptions =  travelOptions.filter(option => option.distance > race.record)
     
-
     //number of ways to beat the record
-
-	return 4
+	return winningOptions.length
 }
