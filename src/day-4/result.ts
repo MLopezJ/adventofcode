@@ -5,37 +5,32 @@ import { getPoints } from './getPoints.js'
 import { processCards } from './processCards.js'
 
 /**
- * Get input data
+ * Format of part I
  */
-export const getPuzzle = async (file: string) => {
-	const baseDir = process.cwd()
-	const subDir = (...tree: string[]): string => path.join(baseDir, ...tree)
-	return readFile(subDir('src/day-4', `${file}`), 'utf-8').then((result) => {
-		return result
-			.toString()
-			.split('\n')
-			.map((txt) => transformToGameType(txt))
-	})
-}
+export const partIFormat = (lines: string[]) =>
+	lines.map((txt) => transformToGameType(txt))
+
+/**
+ * format of part II
+ */
+export const partIIFormat = (lines: string[]) =>
+	lines.reduce((previous: Scratchcards | undefined, current) => {
+		const temp = transformToGameTypePartII(current)
+
+		if (previous === undefined) return { ...temp }
+
+		return { ...previous, ...temp }
+	}, undefined)
 
 /**
  * Get input data
- * // TODO: improve this
  */
-export const getPuzzlePartII = async (file: string) => {
+export const getInput = async (file: string, format: (txt: string[]) => any) => {
 	const baseDir = process.cwd()
 	const subDir = (...tree: string[]): string => path.join(baseDir, ...tree)
 	return readFile(subDir('src/day-4', `${file}`), 'utf-8').then((result) => {
-		return result
-			.toString()
-			.split('\n')
-			.reduce((previous: Scratchcards | undefined, current) => {
-				const temp = transformToGameTypePartII(current)
-
-				if (previous === undefined) return { ...temp }
-
-				return { ...previous, ...temp }
-			}, undefined)
+		const txt = result.toString().split('\n')
+		return format(txt)
 	})
 }
 
@@ -193,13 +188,13 @@ export const partII = (cards: Scratchcards): number => {
  */
 export const main = async () => {
 	const file = `puzzle.txt`
-	const logs = await getPuzzle(file)
-	const logPartII = await getPuzzlePartII(`puzzle.txt`)
+	const logs = await getInput(file, partIFormat)
+	const logsPartII = await getInput(file, partIIFormat)
 
 	const points = result(logs)
 	console.log(`There are a total of ${points} points in ${file}`)
-	if (logPartII !== undefined) {
-		const scratchcardsTotal = partII(logPartII)
+	if (logsPartII !== undefined) {
+		const scratchcardsTotal = partII(logsPartII)
 		console.log(`There are a total ${scratchcardsTotal} cards in ${file}`)
 	}
 }

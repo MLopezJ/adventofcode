@@ -1,6 +1,13 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { getPuzzle, partII, result, transformToGameType, transformToGameTypePartII } from './result.js'
+import {
+	getInput,
+	partIFormat,
+	partII,
+	result,
+	transformToGameType,
+	transformToGameTypePartII,
+} from './result.js'
 
 void describe('result', () => {
 	void it(`should sum point from winning numbers given the cards`, async () => {
@@ -12,7 +19,7 @@ void describe('result', () => {
 		Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
 		Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11
 		 */
-		const logs = await getPuzzle('puzzle-test.txt')
+		const logs = await getInput('puzzle-test.txt', partIFormat)
 		assert.equal(result(logs), 13)
 	})
 })
