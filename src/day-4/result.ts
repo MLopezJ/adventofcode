@@ -4,23 +4,6 @@ import { getWinningNumbers } from './getWinningNumbers.js'
 import { getPoints } from './getPoints.js'
 import { processCards } from './processCards.js'
 
-/**
- * Format of part I
- */
-export const partIFormat = (lines: string[]) =>
-	lines.map((txt) => transformToGameType(txt))
-
-/**
- * format of part II
- */
-export const partIIFormat = (lines: string[]) =>
-	lines.reduce((previous: Scratchcards | undefined, current) => {
-		const temp = transformToGameTypePartII(current)
-
-		if (previous === undefined) return { ...temp }
-
-		return { ...previous, ...temp }
-	}, undefined)
 
 /**
  * Get input data
@@ -62,6 +45,12 @@ export const transformToGameType = (input: string): Card => {
 }
 
 /**
+ * Format of part I
+ */
+export const partIFormat = (lines: string[]) =>
+	lines.map((txt) => transformToGameType(txt))
+
+/**
  * Scratchcards is a game where cards has two lists of numbers separated by a vertical bar (|):
  * 1- a list of winning numbers
  * 2- a list of numbers you have.
@@ -100,6 +89,18 @@ export const transformToGameTypePartII = (input: string): Scratchcards => {
 		},
 	}
 }
+
+/**
+ * format of part II
+ */
+export const partIIFormat = (lines: string[]) =>
+	lines.reduce((previous: Scratchcards | undefined, current) => {
+		const temp = transformToGameTypePartII(current)
+
+		if (previous === undefined) return { ...temp }
+
+		return { ...previous, ...temp }
+	}, undefined)
 
 /**
  * Transform string to array of numbers
