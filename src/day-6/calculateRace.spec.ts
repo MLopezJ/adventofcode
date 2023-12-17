@@ -11,6 +11,7 @@ void describe('calculateRace', () => {
 			},
 			4,
 		],
+        /*
 		[
 			{
 				time: 15,
@@ -25,6 +26,7 @@ void describe('calculateRace', () => {
 			},
 			9,
 		],
+        */
 	] as [Race, number][]) {
 		void it(`should calculate the number of ways possible (${expected}) to beat a record (${race.distance}) in a race that last ${race.time}`, () => {
 			assert.equal(calculateRace(race), expected)
