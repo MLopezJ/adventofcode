@@ -40,3 +40,25 @@ Determine the number of ways you could beat the record in each race. What do you
 
 ### Solution
 The result of multiply the number of times where the record could be beat in the races is:  `588588`
+
+## Part II
+
+As the race is about to start, you realize the piece of paper with race times and record distances you got earlier actually just has very bad kerning. There's really only one race - ignore the spaces between the numbers on each line.
+
+So, the example from before:
+
+``` 
+Time:      7  15   30
+Distance:  9  40  200
+
+```
+...now instead means this:
+
+```
+Time:      71530
+Distance:  940200
+```
+
+### Solution
+
+The result of multiply the number of times where the record could be beat in the races is:  `34655848`
