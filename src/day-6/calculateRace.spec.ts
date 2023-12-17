@@ -1,5 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
+import { calculateRace, type Race } from './calculateRace.js'
 
 void describe('calculateRace', () => {
 	for (const [race, expected] of [
@@ -25,16 +26,8 @@ void describe('calculateRace', () => {
 			9,
 		],
 	] as [Race, number][]) {
-		void it(`should calculate the error margin for a race how last ${race.time} and it record is ${race.distance}`, () => {
+		void it(`should calculate the number of ways possible (${expected}) to beat a record (${race.distance}) in a race that last ${race.time}`, () => {
 			assert.equal(calculateRace(race), expected)
 		})
 	}
 })
-
-type Race = {
-	time: number
-	distance: number
-}
-const calculateRace = (race: Race) => {
-	return 0
-}
