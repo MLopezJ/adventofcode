@@ -12,13 +12,10 @@ const isNumber = (element: string | number) =>
  * Number can be writen in numberr format (example: 5) or in string format (example: five)
  */
 export const calibrationPartII = (token: string): number => {
-	const numbersInToken = [...token].reduce((previous, current) => {
-		//console.log(current)
+	const tokenizeInput = [...token].reduce((previous, current) => {
+		
 		// character is a number
-		if (isNumber(current) === true) {
-			//console.log('current', current, [...previous, current])
-			return [...previous, current]
-		}
+		if (isNumber(current) === true) return [...previous, Number(current)]
 
 		if (previous.length > 0) {
 			const temp = previous.pop()
@@ -28,7 +25,6 @@ export const calibrationPartII = (token: string): number => {
 				/**
 				 * concat string
 				 */
-				console.log(`${temp}${current}`, checkNumberInString(`${temp}${current}`))
 				const number = checkNumberInString(`${temp}${current}`)
 				if (number !== undefined) return [...previous, number]
 				const element = `${temp}${current}`
@@ -37,7 +33,17 @@ export const calibrationPartII = (token: string): number => {
 		}
 
 		return [current]
-	}, [])
-	console.log(numbersInToken)
-	return 0
+	}, []) as unknown as (string|number)[]
+	
+	const numbers = tokenizeInput.filter(element => isNumber(element) === true)
+	if (numbers.length === 1){
+		const n = numbers.pop()
+		return Number(`${n}${n}`)
+	}
+	if (numbers.length === 0) return undefined
+
+	const first = numbers[0]
+	const last = numbers.pop()
+
+	return Number(`${first}${last}`)
 }

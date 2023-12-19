@@ -12,6 +12,7 @@ void describe('calibrationPartII', () => {
         ['nineeightseven', 97],
 		['zoneight234', 14],
 		['7pqrstsixteen', 76],
+		['treb7uchet', 77],
 	] as [string, number][]) {
 		void it(`should get calibration value (${expected}) from token '${token}'`, () => {
 			assert.equal(calibrationPartII(token), expected)
