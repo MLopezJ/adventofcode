@@ -19,6 +19,22 @@ const numbers = {
  * Number can be writen in numberr format (example: 5) or in string format (example: five)
  */
 export const calibrationPartII = (token: string): number => {
-	console.log([...token])
+	const numbersInToken = [...token].reduce((previous, current) => {
+		//console.log(current)
+		// character is a number
+		if (isNaN(current as unknown as number) === false) {
+			//console.log('current', current, [...previous, current])
+			return [...previous, current]
+		}
+
+		if (previous.length > 0 ){
+			const temp = previous.pop()
+			const element =  `${temp}${current}`
+			return [...previous, element]
+		}
+
+		return [current]
+	}, [])
+	console.log(numbersInToken)
 	return 0
 }
