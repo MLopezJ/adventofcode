@@ -1,17 +1,4 @@
-/**
- * From string to number
- */
-const numbers = {
-	one: 1,
-	two: 2,
-	three: 3,
-	four: 4,
-	five: 5,
-	six: 6,
-	seven: 7,
-	eight: 8,
-	nine: 9,
-}
+import { checkNumberInString } from "./checkNumberInString"
 
 /**
  * return true if element is a number
@@ -38,6 +25,12 @@ export const calibrationPartII = (token: string): number => {
 			if (isNumber(temp) === true) {
 				return [...previous, temp, current]
 			} else {
+				/**
+				 * concat string
+				 */
+				console.log(`${temp}${current}`, checkNumberInString(`${temp}${current}`))
+				const number = checkNumberInString(`${temp}${current}`)
+				if (number !== undefined) return [...previous, number]
 				const element = `${temp}${current}`
 				return [...previous, element]
 			}
