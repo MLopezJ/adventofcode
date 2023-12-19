@@ -1,7 +1,6 @@
-# About
+#  Trebuchet
 
-## Trebuchet
-
+## Part I
 Something is wrong with global snow production, and you've been selected to take a look.
 
 As the elves are making the final adjustments, they discover that their calibration document (your puzzle input) has been amended by a very young Elf who was apparently just excited to show off her art skills. Consequently, they are having trouble reading the values on the document.
@@ -23,3 +22,33 @@ Consider your entire [calibration document](./calibrationDocument.txt). What is 
 ## Solution
 
 the sum of all the calibration values is `53651`
+
+## Part II
+
+Your calculation isn't quite right. It looks like some of the digits are actually spelled out with letters: one, two, three, four, five, six, seven, eight, and nine also count as valid "digits".
+
+Equipped with this new information, you now need to find the real first and last digit on each line. For example:
+
+```
+two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen
+```
+
+In this example, the calibration values are:
+
+```
+two1nine  --> 29
+eightwothree --> 83
+abcone2threexyz --> 13
+xtwone3four --> 24
+4nineeightseven2 --> 42
+zoneight234 --> 14
+7pqrstsixteen --> 76
+```
+
+Adding these together produces 281.
