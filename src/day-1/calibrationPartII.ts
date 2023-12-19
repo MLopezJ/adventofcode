@@ -16,7 +16,8 @@ const numbers = {
 /**
  * return true if element is a number
  */
-const isNumber = (element: string | number) => isNaN(element as unknown as number) === false
+const isNumber = (element: string | number) =>
+	isNaN(element as unknown as number) === false
 
 /**
  * Find first and last number of input.
@@ -32,10 +33,14 @@ export const calibrationPartII = (token: string): number => {
 			return [...previous, current]
 		}
 
-		if (previous.length > 0 ){
+		if (previous.length > 0) {
 			const temp = previous.pop()
-			const element =  `${temp}${current}`
-			return [...previous, element]
+			if (isNumber(temp) === true) {
+				return [...previous, temp, current]
+			} else {
+				const element = `${temp}${current}`
+				return [...previous, element]
+			}
 		}
 
 		return [current]
