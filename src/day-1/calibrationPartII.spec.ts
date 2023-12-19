@@ -1,5 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
+import { calibrationPartII } from './calibrationPartII.js'
 
 void describe('calibrationPartII', () => {
 	for (const [token, expected] of [
@@ -16,13 +17,9 @@ void describe('calibrationPartII', () => {
 			assert.equal(calibrationPartII(token), expected)
 		})
 	}
+
+    void it(`should not transform string 'ten' in number`, () => {
+        assert.equal(calibrationPartII('ten234'), 24)
+    })
 })
 
-/**
- * Find first and last number of input.
- * 
- * Number can be writen in numberr format (example: 5) or in string format (example: five)
- */
-const calibrationPartII = (token: string): number => {
-	return 0
-}
