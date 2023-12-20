@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { getCalibration } from './getCalibration'
+import { calibrationPartII } from './calibrationPartII.js'
 
 /**
  * Get tokens from calibrationDocument.txt
@@ -27,4 +28,17 @@ const Trebuchet = async () => {
 		}, 0)
 }
 
+/**
+ * 
+ */
+const TrebuchetII = async () => {
+	const tokens = await getTokens()
+	return tokens
+		.map((token) => calibrationPartII(token))
+		.reduce((previous, current) => {
+			return previous + current
+		}, 0)
+}
+
 console.log(`the sum of all the calibration values is ${await Trebuchet()}`)
+console.log(`the sum of all the calibration values (part II) is ${await TrebuchetII()}`)
