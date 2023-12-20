@@ -1,4 +1,4 @@
-import { checkNumberInString } from "./checkNumberInString"
+import { checkNumberInString } from './checkNumberInString'
 
 /**
  * return true if element is a number
@@ -11,32 +11,11 @@ const isNumber = (element: string | number) =>
  *
  * Number can be writen in numberr format (example: 5) or in string format (example: five)
  */
-export const calibrationPartII = (token: string): number => {
-	const tokenizeInput = [...token].reduce((previous, current) => {
-		
-		// character is a number
-		if (isNumber(current) === true) return [...previous, Number(current)]
+export const calibrationPartII = (input: string): number => {
+	const token = tokenizeInput([...input])
 
-		if (previous.length > 0) {
-			const temp = previous.pop()
-			if (isNumber(temp) === true) {
-				return [...previous, temp, current]
-			} else {
-				/**
-				 * concat string
-				 */
-				const number = checkNumberInString(`${temp}${current}`)
-				if (number !== undefined) return [...previous, number]
-				const element = `${temp}${current}`
-				return [...previous, element]
-			}
-		}
-
-		return [current]
-	}, []) as unknown as (string|number)[]
-	
-	const numbers = tokenizeInput.filter(element => isNumber(element) === true)
-	if (numbers.length === 1){
+	const numbers = token.filter((element) => isNumber(element) === true)
+	if (numbers.length === 1) {
 		const n = numbers.pop()
 		return Number(`${n}${n}`)
 	}
@@ -46,4 +25,44 @@ export const calibrationPartII = (token: string): number => {
 	const last = numbers.pop()
 
 	return Number(`${first}${last}`)
+}
+
+/**
+ * Concat characters and transform to number in case of element is numeric,
+ * both when element is a number (5) or string (five)
+ */
+const tokenizeInput = (input: string[]) => {
+	const tokenizeInput = input.reduce((previous: (string | number)[], current: string) => {
+		// character is a number. Example: 5
+		if (isNumber(current) === true) return [...previous, Number(current)]
+
+		if (previous.length > 0) {
+			const prep = previous.pop()
+
+			/**
+			 * if previous element is a number,
+			 * do not concat current character to it
+			 */
+			if (prep !== undefined && isNumber(prep) === true)
+				return [...previous, prep, current]
+			else {
+				/**
+				 * concat current character to previous element
+				 */
+				const concat = `${prep}${current}`
+
+				/**
+				 * check if a number as string format is in element. Example: five
+				 */
+				const maybeNumber = checkNumberInString(concat)
+				if (maybeNumber !== undefined) return [...previous, maybeNumber]
+
+				return [...previous, concat]
+			}
+		}
+
+		return [current]
+	}, []) as unknown as number[]
+
+	return tokenizeInput
 }
