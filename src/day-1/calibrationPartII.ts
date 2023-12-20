@@ -11,7 +11,7 @@ const isNumber = (element: string | number) =>
  *
  * Number can be writen in numberr format (example: 5) or in string format (example: five)
  */
-export const calibrationPartII = (input: string): number => {
+export const calibrationPartII = (input: string): number | undefined => {
 	const token = tokenizeInput([...input])
 
 	const numbers = token.filter((element) => isNumber(element) === true)
