@@ -9,14 +9,14 @@ const isNumber = (element: string | number) =>
 /**
  * Find first and last number of input.
  *
- * Number can be writen in numberr format (example: 5) or in string format (example: five)
+ * Number can be writen in number format (example: 5) or in string format (example: five)
  */
-export const calibrationPartII = (input: string): number | undefined => {
+export const calibrationPartII = (input: string): number  => {
 	const token = tokenizeInput([...input])
 
 	const maybeNumbers = token.filter((element) => isNumber(element) === true)
 
-	if (maybeNumbers.length === 0) return undefined
+	if (maybeNumbers.length === 0) return 0
 	const first = maybeNumbers[0]
 
 	if (maybeNumbers.length === 1) return Number(`${first}${first}`)
