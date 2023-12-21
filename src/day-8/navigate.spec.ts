@@ -19,50 +19,49 @@ void describe(`navigate`, () => {
 
          */
 
-		const map = [
+		const map = {
 			// AAA = (BBB, CCC)
-			{
-				node: 'AAA',
+			AAA: {
 				left: 'BBB',
 				rigth: 'CCC',
 			},
+
 			// BBB = (DDD, EEE)
-			{
-				node: 'BBB',
+			BBB: {
 				left: 'DDD',
 				rigth: 'EEE',
 			},
+
 			// CCC = (ZZZ, GGG)
-			{
-				node: 'CCC',
+			CCC: {
 				left: 'ZZZ',
 				rigth: 'GGG',
 			},
+
 			// DDD = (DDD, DDD)
-			{
-				node: 'DDD',
+			DDD: {
 				left: 'DDD',
 				rigth: 'DDD',
 			},
+
 			// EEE = (EEE, EEE)
-			{
-				node: 'EEE',
+			EEE: {
 				left: 'EEE',
 				rigth: 'EEE',
 			},
+
 			// GGG = (GGG, GGG)
-			{
-				node: 'GGG',
+			GGG: {
 				left: 'GGG',
 				rigth: 'GGG',
 			},
+
 			// ZZZ = (ZZZ, ZZZ)
-			{
-				node: 'ZZZ',
+			ZZZ: {
 				left: 'ZZZ',
 				rigth: 'ZZZ',
 			},
-		]
+		}
 
 		const departure = 'AAA'
 		const arrive = 'ZZZ'
