@@ -6,7 +6,7 @@ import { calibrationPartII } from './calibrationPartII.js'
 /**
  * Get tokens from calibrationDocument.txt
  */
-const getTokens = async (file: string) => {
+export const getTokens = async (file: string) => {
 	const baseDir = process.cwd()
 	const subDir = (...tree: string[]): string => path.join(baseDir, ...tree)
 	return readFile(subDir('src/day-1', file), 'utf-8').then(
@@ -29,17 +29,9 @@ const Trebuchet = async () => {
 }
 
 /**
- TODO: create test case for it.
-
- Result: 53896
- 
- That's not the right answer; your answer is too high. 
- If you're stuck, make sure you're using the full input data; 
- there are also some general tips on the about page, or you can ask for hints on the subreddit. 
- Please wait one minute before trying again. [Return to Day 1]
+ * return sum of all of the calibration values
  */
-const TrebuchetII = async () => {
-	const tokens = await getTokens()
+export const TrebuchetII = (tokens: string[]) => {
 	return tokens
 		.map((token) => calibrationPartII(token))
 		.reduce((previous, current) => {
@@ -48,4 +40,5 @@ const TrebuchetII = async () => {
 }
 
 console.log(`the sum of all the calibration values is ${await Trebuchet()}`)
-console.log(`the sum of all the calibration values (part II) is ${await TrebuchetII()}`)
+const tokensPartII = await getTokens('calibrationDocument.txt')
+console.log(`the sum of all the calibration values (part II) is ${TrebuchetII(tokensPartII)}`)
