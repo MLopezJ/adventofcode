@@ -18,12 +18,61 @@ void describe(`navigate`, () => {
             ZZZ = (ZZZ, ZZZ)
 
          */
+
+		const map = [
+			// AAA = (BBB, CCC)
+			{
+				node: 'AAA',
+				left: 'BBB',
+				rigth: 'CCC',
+			},
+			// BBB = (DDD, EEE)
+			{
+				node: 'BBB',
+				left: 'DDD',
+				rigth: 'EEE',
+			},
+			// CCC = (ZZZ, GGG)
+			{
+				node: 'CCC',
+				left: 'ZZZ',
+				rigth: 'GGG',
+			},
+			// DDD = (DDD, DDD)
+			{
+				node: 'DDD',
+				left: 'DDD',
+				rigth: 'DDD',
+			},
+			// EEE = (EEE, EEE)
+			{
+				node: 'EEE',
+				left: 'EEE',
+				rigth: 'EEE',
+			},
+			// GGG = (GGG, GGG)
+			{
+				node: 'GGG',
+				left: 'GGG',
+				rigth: 'GGG',
+			},
+			// ZZZ = (ZZZ, ZZZ)
+			{
+				node: 'ZZZ',
+				left: 'ZZZ',
+				rigth: 'ZZZ',
+			},
+		]
+
 		const departure = 'AAA'
 		const arrive = 'ZZZ'
 		const instructions = ['R', 'L']
 		const steps = navigate({
-            departure, arrive, instructions
-        })
+			departure,
+			arrive,
+			instructions,
+			map,
+		})
 		assert.equal(steps, 2)
 	})
 })
