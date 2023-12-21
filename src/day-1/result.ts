@@ -41,4 +41,4 @@ const result = async () => {
 	console.log(`the sum of all the calibration values (part II) is ${partII}`)
 }
 
-result()
+//result()
