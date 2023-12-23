@@ -21,15 +21,16 @@ export const navigate = ({
 	map: Map
 }): number => {
 	let currentNode = map[departure]
-    console.log('init, ',departure, currentNode)
+
 	// max amount of steps possible. (used to prevent infinite loops)
 	let steps = 10
-	let counter = 0
+    // iterate over the instructions
+	let instructionIterrator = 0
 
 	/* currentNode !== arrive || */
 	while (steps > 0) {
 		//console.log(map[currentNode])
-		const instruction = instructions[counter]
+		const instruction = instructions[instructionIterrator]
 		console.log(`move to ${instruction}`)
 		if (instruction === 'L') {
             console.log(currentNode?.left)
@@ -40,7 +41,7 @@ export const navigate = ({
             currentNode = map[currentNode?.rigth]
 		}
 		steps -= 1
-		counter += 1
+		instructionIterrator += 1
 	}
 
 	return 2
