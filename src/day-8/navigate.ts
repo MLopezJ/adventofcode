@@ -3,7 +3,7 @@ type NeightbornNode = {
 	rigth: string
 }
 
-type Map = Record<string, NeightbornNode>
+export type Map = Record<string, NeightbornNode>
 
 /**
  * Follow the instructions to archive arriving goal from departure node
