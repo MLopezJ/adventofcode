@@ -13,6 +13,24 @@ void describe('tokenize', () => {
 				},
 			},
 		],
+		[
+			'BBB = (DDD, EEE)',
+			{
+				BBB: {
+					left: 'DDD',
+					rigth: 'EEE',
+				},
+			},
+		],
+		[
+			'CCC = (ZZZ, GGG)',
+			{
+				CCC: {
+					left: 'ZZZ',
+					rigth: 'GGG',
+				},
+			},
+		],
 	] as [string, Map][]) {
 		void it(`should tokenize '${input}'`, () => {
 			assert.deepEqual(tokenize(input), expected)
