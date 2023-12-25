@@ -43,7 +43,20 @@ void describe('tokenize', () => {
 /**
  * Transform string into Map type
  */
-const tokenize = (input: string): Map => {
+const tokenize = (input: string): Map | undefined => {
+	// 'AAA = (BBB, CCC)'
+	const temp = input.split('=')
+	if (temp.length === 0)return undefined
+
+	const node = temp[0]
+	const nextNodes = temp[1]?.split(',') as string[]
+
+	if (nextNodes.length === 0)return undefined
+	const rigth = nextNodes[0]
+	const left = nextNodes[1]
+
+	// console.log({node, rigth, left})
+
 	return {
 		AAA: {
 			left: 'BBB',
