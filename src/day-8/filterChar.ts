@@ -10,6 +10,5 @@ export const filterChar = (txt: string, char: string) => {
             // concat string
 			return `${previous}${current}`
 		})
-	console.log(result)
 	return result
 }
