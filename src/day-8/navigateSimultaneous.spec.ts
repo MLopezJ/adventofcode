@@ -1,5 +1,3 @@
-// should reach ZZ following instructions
-// steps 2
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
 
@@ -29,6 +27,9 @@ void describe(`navigateSimultaneous`, () => {
 	})
 })
 
+/**
+ * Navigate multiple paths simultaneous to archive final node
+ */
 const navigateSimultaneous = async ({
 	departure,
 	arrive,
@@ -38,5 +39,6 @@ const navigateSimultaneous = async ({
 	arrive: string
 	path: string
 }) => {
+    const departures = ["11A", "22A"] // get departures
     return 6
 }
