@@ -43,56 +43,27 @@ const navigateSimultaneous = async ({
 	path: string
 }) => {
 	const data = await readFile(path)
-	// Step 0: You are at 11A and 22A.
-	const departures = Object.keys(data.map).filter((node) =>
+
+	// iterate over the instructions
+	let iterator = 0
+	let array = Object.keys(data.map).filter((node) =>
 		inspectNode(node, departure),
 	)
 
-	// Step 1: You choose all of the left paths, leading you to 11B and 22B.
-	const step_a_1 = step(
-		departures[0] as string,
-		data.instructions[0] as string,
-		data.map,
-	)
-	const step_b_1 = step(
-		departures[1] as string,
-		data.instructions[0] as string,
-		data.map,
-	)
-	console.log({ step_a_1, step_b_1 })
+    // TODO: add descrption
+    let check = array.every((element) => inspectNode(element, arrive))
 
-	// Step 2: You choose all of the right paths, leading you to 11Z and 22C.
-	const step_a_2 = step(step_a_1, data.instructions[1] as string, data.map)
-	const step_b_2 = step(step_b_1, data.instructions[1] as string, data.map)
-	console.log({ step_a_2, step_b_2 })
-
-	//  Step 3: You choose all of the left paths, leading you to 11B and 22Z.
-	const step_a_3 = step(step_a_2, data.instructions[0] as string, data.map)
-	const step_b_3 = step(step_b_2, data.instructions[0] as string, data.map)
-	console.log({ step_a_3, step_b_3 })
-
-	// Step 4: You choose all of the right paths, leading you to 11Z and 22B.
-	const step_a_4 = step(step_a_3, data.instructions[1] as string, data.map)
-	const step_b_4 = step(step_b_3, data.instructions[1] as string, data.map)
-	console.log({ step_a_4, step_b_4 })
-
-	// Step 5: You choose all of the left paths, leading you to 11B and 22C.
-	const step_a_5 = step(step_a_4, data.instructions[0] as string, data.map)
-	const step_b_5 = step(step_b_4, data.instructions[0] as string, data.map)
-	console.log({ step_a_5, step_b_5 })
-
-	// Step 6: You choose all of the right paths, leading you to 11Z and 22Z.
-	const step_a_6 = step(step_a_5, data.instructions[1] as string, data.map)
-	const step_b_6 = step(step_b_5, data.instructions[1] as string, data.map)
-	console.log({ step_a_6, step_b_6 })
-
-	if (
-		inspectNode(step_a_6, arrive) === true &&
-		inspectNode(step_b_6, arrive) === true
-	)
-		return 6
-
-	return 0
+	while(check !== true) {
+		const index = iterator % data.instructions.length
+		const instruction = data.instructions[index] as string
+        
+		array = array.map((element) => step(element, instruction, data.map))
+		
+        check = array.every((element) => inspectNode(element, arrive))
+		iterator += 1
+	}
+   
+	return iterator
 }
 
 /**
