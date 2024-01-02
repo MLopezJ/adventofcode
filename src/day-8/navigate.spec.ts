@@ -27,4 +27,23 @@ void describe(`navigate`, () => {
 		})
 		assert.equal(steps, 2)
 	})
+
+	it(`should repeat instructions if arrival node is not archive after first iteration of instructions`, async () => {
+		const path = 'logs-testII.txt'
+		/**
+            LLR
+
+			AAA = (BBB, BBB)
+			BBB = (AAA, ZZZ)
+			ZZZ = (ZZZ, ZZZ)
+         */
+		const departure = 'AAA'
+		const arrive = 'ZZZ'
+		const steps = await navigate({
+			departure,
+			arrive,
+			path,
+		})
+		assert.equal(steps, 6)
+	})
 })
