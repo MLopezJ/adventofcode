@@ -30,7 +30,8 @@ export const navigate = async ({
 
 	/* currentNode !== arrive || */
 	while (currentNode !== arrive || steps > 0) {
-		const instruction = data.instructions[iterator]
+		const index = iterator % data.instructions.length
+		const instruction = data.instructions[index]
 		steps -= 1
 		iterator += 1
 
