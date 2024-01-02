@@ -16,52 +16,11 @@ export const readFile = async (
 	})
 
 	const instructions = txt[0]?.split('') as string[]
-	const map = txt.slice(2, txt.length).map((element) => tokenize(element)) // TODO: use reduce instead of map
-	console.log( map)
+	const map = txt
+		.slice(2, txt.length)
+		.reduce((previus, current) => ({ ...previus, ...tokenize(current) }), {})
 	return {
-		map: {
-			// AAA = (BBB, CCC)
-			AAA: {
-				left: 'BBB',
-				rigth: 'CCC',
-			},
-
-			// BBB = (DDD, EEE)
-			BBB: {
-				left: 'DDD',
-				rigth: 'EEE',
-			},
-
-			// CCC = (ZZZ, GGG)
-			CCC: {
-				left: 'ZZZ',
-				rigth: 'GGG',
-			},
-
-			// DDD = (DDD, DDD)
-			DDD: {
-				left: 'DDD',
-				rigth: 'DDD',
-			},
-
-			// EEE = (EEE, EEE)
-			EEE: {
-				left: 'EEE',
-				rigth: 'EEE',
-			},
-
-			// GGG = (GGG, GGG)
-			GGG: {
-				left: 'GGG',
-				rigth: 'GGG',
-			},
-
-			// ZZZ = (ZZZ, ZZZ)
-			ZZZ: {
-				left: 'ZZZ',
-				rigth: 'ZZZ',
-			},
-		},
-		instructions
+		map,
+		instructions,
 	}
 }
