@@ -23,16 +23,12 @@ export const navigate = async ({
 	const data = await readFile(path)
 	let currentNode = departure
 
-	// max amount of steps possible. (used to prevent infinite loops)
-	let steps = 10
 	// iterate over the instructions
 	let iterator = 0
 
-	/* currentNode !== arrive || */
-	while (currentNode !== arrive || steps > 0) {
+	while (currentNode !== arrive) {
 		const index = iterator % data.instructions.length
 		const instruction = data.instructions[index]
-		steps -= 1
 		iterator += 1
 
 		if (instruction === 'L') currentNode = data.map[currentNode]?.left as string
