@@ -1,5 +1,7 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
+import { readFile } from './readFile.js'
+import { inspectNode } from './inspectNode.js'
 
 void describe(`navigateSimultaneous`, () => {
 	void it(`should navigate 2 paths at the same time`, async () => {
@@ -39,6 +41,7 @@ const navigateSimultaneous = async ({
 	arrive: string
 	path: string
 }) => {
-    const departures = ["11A", "22A"] // get departures
+    const data = await readFile(path)
+    const departures = Object.keys(data.map).filter(node => inspectNode(node, departure))
     return 6
 }
