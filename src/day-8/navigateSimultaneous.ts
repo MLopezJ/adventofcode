@@ -21,20 +21,22 @@ export const navigateSimultaneous = async ({
 	let array = Object.keys(data.map).filter((node) =>
 		inspectNode(node, departure),
 	)
+	// 'JHA', 'NCA', 'MMA', 'AAA', 'TVA', 'DTA'
+	// 21883  13019, 19667, 16343, 18559, 14681
 
-    // TODO: add descrption
-    let check = array.every((element) => inspectNode(element, arrive))
+	// TODO: add descrption
+	let check = array.every((element) => inspectNode(element, arrive))
 
-	while(check !== true) {
+	while (check !== true) {
 		const index = iterator % data.instructions.length
 		const instruction = data.instructions[index] as string
-        
+
 		array = array.map((element) => step(element, instruction, data.map))
-		
-        check = array.every((element) => inspectNode(element, arrive))
+
+		check = array.every((element) => inspectNode(element, arrive))
 		iterator += 1
 	}
-   
+
 	return iterator
 }
 
