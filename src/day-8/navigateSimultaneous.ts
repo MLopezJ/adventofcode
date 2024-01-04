@@ -18,6 +18,7 @@ export const navigateSimultaneous = async ({
 
 	// iterate over the instructions
 	let iterator = 0
+	// initial nodes
 	let array = Object.keys(data.map).filter((node) =>
 		inspectNode(node, departure),
 	)
