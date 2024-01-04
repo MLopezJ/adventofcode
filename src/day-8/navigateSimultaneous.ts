@@ -25,7 +25,7 @@ export const navigateSimultaneous = async ({
 	// 'JHA', 'NCA', 'MMA', 'AAA', 'TVA', 'DTA'
 	// 21883, 13019, 19667, 16343, 18559, 14681
 
-	// TODO: add descrption
+	// check if nodes are arrival nodes
 	let check = array.every((element) => inspectNode(element, arrive))
 
 	/**
