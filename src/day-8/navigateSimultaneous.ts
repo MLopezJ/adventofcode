@@ -22,7 +22,7 @@ export const navigateSimultaneous = async ({
 		inspectNode(node, departure),
 	)
 	// 'JHA', 'NCA', 'MMA', 'AAA', 'TVA', 'DTA'
-	// 21883  13019, 19667, 16343, 18559, 14681
+	// 21883, 13019, 19667, 16343, 18559, 14681
 
 	// TODO: add descrption
 	let check = array.every((element) => inspectNode(element, arrive))
