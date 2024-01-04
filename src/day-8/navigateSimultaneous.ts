@@ -28,6 +28,16 @@ export const navigateSimultaneous = async ({
 	// TODO: add descrption
 	let check = array.every((element) => inspectNode(element, arrive))
 
+	/**
+	 * TODO:
+	 * 
+	 * get inital nodes
+	 * 
+	 * get total of steps by each initial node
+	 * 
+	 * get Least Common Multiple from that list of steps
+	 */
+
 	while (check !== true) {
 		const index = iterator % data.instructions.length
 		const instruction = data.instructions[index] as string
