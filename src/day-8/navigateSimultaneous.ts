@@ -51,7 +51,5 @@ const step = (currentNode: string, instruction: string, map: Map) => {
 /**
  * Translate instruction to direction
  */
-const getDirection = (direrction: string) => {
-	if (direrction === 'L') return 'left'
-	return 'rigth'
-}
+const getDirection = (direrction: string) =>
+	direrction === 'L' ? 'left' : 'rigth'
