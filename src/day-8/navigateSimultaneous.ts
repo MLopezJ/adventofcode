@@ -24,6 +24,12 @@ export const navigateSimultaneous = async ({
 	)
 	// 'JHA', 'NCA', 'MMA', 'AAA', 'TVA', 'DTA'
 	// 21883, 13019, 19667, 16343, 18559, 14681
+	const steps = array.map(element => getSteps({
+		departureNode: element,
+		arrivalNode: arrive,
+		instructions: data.instructions,
+		map:data.map
+	}))
 
 	// check if nodes are arrival nodes
 	let check = array.every((element) => inspectNode(element, arrive))
@@ -31,9 +37,9 @@ export const navigateSimultaneous = async ({
 	/**
 	 * TODO:
 	 * 
-	 * get inital nodes
+	 * get inital nodes (done)
 	 * 
-	 * get total of steps by each initial node
+	 * get total of steps by each initial node (done)
 	 * 
 	 * get Least Common Multiple from that list of steps
 	 */
@@ -49,6 +55,44 @@ export const navigateSimultaneous = async ({
 	}
 
 	return iterator
+}
+
+/**
+ * Get total amount of steps to archive arrival node from departure node
+ */
+const getSteps = ({
+	departureNode,
+	arrivalNode,
+	instructions,
+	map
+}: {
+	departureNode: string
+	arrivalNode: string
+	instructions: string[]
+	map: Map
+}) => {
+	// iterate over the instructions
+	let iterator = 0
+	
+	// node that is iterating by each step
+	let node = departureNode
+
+	// check if node is arrival nodes
+	let check = inspectNode(node, arrivalNode)
+
+	while (check !== true) {
+		const index = iterator % instructions.length
+		const instruction = instructions[index] as string
+
+		// do step
+		node = step(node, instruction, map)
+		// check
+		check = inspectNode(node, arrivalNode)
+		iterator += 1
+	}
+
+	return iterator
+
 }
 
 /**
