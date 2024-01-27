@@ -10,7 +10,9 @@ export const leastCommonMultiple = (array: number[]) => {
 		// inner function to use 'high' variable
 		const scm = (l: number, h: number): number => {
 			if (h % l === 0) return h
-			return scm(l, h + high)
+			else{
+				return scm(l, h + high)
+			}
 		}
 		return scm(low, high)
 	}
