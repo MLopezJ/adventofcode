@@ -2,24 +2,30 @@
  * the smallest number that two or more numbers can divide into evenly
  */
 export const leastCommonMultiple = (array: number[]) => {
-	var max = Math.max(...array)
-	var min = Math.min(...array)
-	var candidate = max
-
-	const smallestCommon = (low: number, high: number) => {
-		// inner function to use 'high' variable
-		const scm = (l: number, h: number): number => {
-			if (h % l === 0) return h
-			else{
-				return scm(l, h + high)
-			}
-		}
-		return scm(low, high)
-	}
-
-	for (let i = min; i <= max; i += 1) candidate = smallestCommon(i, candidate)
-
-	return candidate
-
+	const result = array.map(number => primeFactors(number))
+	// TODO: find intersection
+	// TODO: find not intersection
+	// explanation
+	return 300
 	//return 12
+}
+
+
+
+/**
+ * find the prime factor numbers of n
+ * Code taked from https://stackoverflow.com/a/68396156 
+ */
+const primeFactors = (n: number): number[] => {
+	const arr = []
+	let i = 2
+	while (i <= n) {
+		if (n % i == 0) {
+			n = n / i
+			arr.push(i)
+		} else {
+			i++
+		}
+	}
+	return arr
 }
