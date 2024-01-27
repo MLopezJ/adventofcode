@@ -41,4 +41,4 @@ ZZZ = (ZZZ, ZZZ)
 Starting at AAA, follow the left/right instructions. How many steps are required to reach ZZZ?
 
 #### Solution
-Usung `logs.txt`, the ammount of steps required to reach `ZZZ` from `AAA` is `16343`
+Using `logs.txt`, the ammount of steps required to reach `ZZZ` from `AAA` is `16343`
