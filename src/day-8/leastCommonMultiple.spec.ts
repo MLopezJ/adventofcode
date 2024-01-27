@@ -4,7 +4,7 @@ import { leastCommonMultiple } from "./leastCommonMultiple"
 
 void describe("leastCommonMultiple", () => {
     const array = [1,2,3]
-    const expected = 12
+    const expected = 6
     void it(`should return ${expected} (Least Common Multiple) from ${array}`, () => {
         assert.equal(leastCommonMultiple(array), expected)
     })
