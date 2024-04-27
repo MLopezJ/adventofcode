@@ -1,4 +1,12 @@
 /**
+ * Predict the next value for each sequence and add them together
+ */
+export const sum = (input: number[][]) =>
+	input
+		.map((sequence) => numberPredicted(sequence))
+		.reduce((previus, current) => previus + current, 0)
+
+/**
  * return the number predicted by method "predict"
  */
 export const numberPredicted = (input: number[]): number => {

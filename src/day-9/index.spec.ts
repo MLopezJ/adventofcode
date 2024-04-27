@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { differenceAtEachStep, numberPredicted } from '.'
+import { differenceAtEachStep, numberPredicted, sum } from '.'
 
 void describe('numberPredicted', () => {
 	for (const [input, expectedPrediction] of [
@@ -32,4 +32,16 @@ void describe(`difference at each step`, () => {
 			assert.equal(result.length, input.length - 1)
 		})
 	}
+})
+
+void describe(`sum predicted numbers`, () => {
+	it(`should predict next number per sequence, return the value and sum all the predicted numbers`, () => {
+		const input = [
+			[0, 3, 6, 9, 12, 15],
+			[1, 3, 6, 10, 15, 21],
+			[10, 13, 16, 21, 30, 45],
+		]
+		const expected = 114
+		assert.equal(sum(input), expected)
+	})
 })
