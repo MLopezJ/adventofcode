@@ -11,11 +11,22 @@ void describe('Predict', () => {
 })
 
 void describe(`difference at each step`, () => {
-	it(`should make a new sequence from the difference at each step of input data`, () => {
-		const input = [0, 3, 6, 9, 12, 15]
-		const expectedResult = [3, 3, 3, 3, 3]
-		const result = differenceAtEachStep(input)
-		assert.equal(result, expectedResult)
-		assert.equal(result.length, input.length - 1)
-	})
+	for (const [input, expectedOutput] of [
+		[
+			[0, 3, 6, 9, 12, 15],
+			[3, 3, 3, 3, 3],
+		],
+
+		[
+			[3, 3, 3, 3, 3],
+			[0, 0, 0, 0],
+		],
+	] as [number[], number[]][]) {
+		it(`should make a new sequence (${expectedOutput}) from the difference at each step of input data (${input})`, () => {
+			const result = differenceAtEachStep(input)
+			assert.deepEqual(result, expectedOutput)
+			// Note that this sequence has one fewer value than the input sequence because at each step it considers two numbers from the input.
+			assert.equal(result.length, input.length - 1)
+		})
+	}
 })
