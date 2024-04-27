@@ -1,7 +1,7 @@
 /**
- * Predict next number in secuention
+ * return the number predicted by method "predict"
  */
-export const index = (input: number[]): number => {
+export const numberPredicted = (input: number[]): number => {
 	const result = predict(input)
 	const prediction = result[result.length - 1] // number predicted
 	return prediction as number

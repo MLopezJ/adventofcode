@@ -1,13 +1,16 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { differenceAtEachStep, index } from '.'
+import { differenceAtEachStep, numberPredicted } from '.'
 
-void describe('Predict', () => {
-	it(`should predict next value from sequention`, () => {
-		const input = [0, 3, 6, 9, 12, 15]
-		const expectedResult = 18
-		assert.equal(index(input), expectedResult)
-	})
+void describe('numberPredicted', () => {
+	for (const [input, expectedPrediction] of [
+		[[0, 3, 6, 9, 12, 15], 18],
+		[[1, 3, 6, 10, 15, 21], 28],
+		[[10, 13, 16, 21, 30, 45], 68],
+	] as [number[], number][]) {
+		it(`should return the number predictd (${expectedPrediction}) by method "predict" with input (${input})`, () =>
+			assert.equal(numberPredicted(input), expectedPrediction))
+	}
 })
 
 void describe(`difference at each step`, () => {
