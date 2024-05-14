@@ -1,3 +1,6 @@
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
+
 /**
  * Predict the next value for each sequence and add them together
  */
@@ -60,3 +63,43 @@ export const differenceAtEachStep = (input: number[]): number[] => {
 // Check if all elements in input are equal to 0
 const areAllZeroes = (input: number[]): boolean =>
 	input.every((element) => element === 0)
+
+/**
+ *
+ */
+const tokenizeTxt = async (fileName: string): Promise<number[][]> => {
+	const baseDir = process.cwd()
+	const subDir = (...tree: string[]): string => path.join(baseDir, ...tree)
+	const txt = await readFile(subDir('src/day-9', fileName), 'utf-8').then(
+		(result) => {
+			return result.toString().split('\n')
+		},
+	)
+	return txt.map((element) => fromTextToList(element))
+}
+
+
+
+/**
+ * Transform text from a string to an arrray of numbers
+ */
+export const fromTextToList = (input: string): number[] =>
+	input.split(' ').reduce((previous: any, current: string) => {
+		return [...previous, Number(current)]
+	}, [])
+
+
+/**
+ * Solution
+ * 
+ * That's not the right answer; your answer is too high. 
+ * If you're stuck, make sure you're using the full input data; 
+ * there are also some general tips on the about page, or you can ask for hints on the subreddit. 
+ * Please wait one minute before trying again. [Return to Day 9]
+ */
+const solution = async () => {
+	const input = await tokenizeTxt('input.txt')
+	const result = sum(input)
+	console.log(`the result is ${result}`)
+}
+// solution()

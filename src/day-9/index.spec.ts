@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { differenceAtEachStep, numberPredicted, sum } from '.'
+import { differenceAtEachStep, fromTextToList, numberPredicted, sum } from '.'
 
 void describe('numberPredicted', () => {
 	for (const [input, expectedPrediction] of [
@@ -63,5 +63,15 @@ void describe(`sum predicted numbers`, () => {
 		]
 		const expected = 114
 		assert.equal(sum(input), expected)
+	})
+})
+
+void describe(`fromTextToList`, () => {
+	it(`should transform input from a string to an array of numbers`, () => {
+		const input = '14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48'
+		const expectedOutput = [
+			14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48,
+		]
+		assert.deepStrictEqual(fromTextToList(input), expectedOutput)
 	})
 })
