@@ -44,6 +44,27 @@ void describe(`difference at each step`, () => {
 			[0, 0, 0, 1],
 			[0, 0, 1],
 		],
+
+		[
+			[10, 13, 16, 21, 30, 45, 68],
+			[3,3, 5, 9, 15, 23],
+		],
+
+		[
+			[3,3, 5, 9, 15, 23],
+			[0, 2, 4, 6, 8],
+		],
+
+		[
+			[0, 2, 4, 6, 8],
+			[2, 2, 2, 2],
+		],
+
+		[
+			[2, 2, 2, 2],
+			[0, 0, 0],
+		],
+
 	] as [number[], number[]][]) {
 		it(`should make a new sequence (${expectedOutput}) from the difference at each step of input data (${input})`, () => {
 			const result = differenceAtEachStep(input)

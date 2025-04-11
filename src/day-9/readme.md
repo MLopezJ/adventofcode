@@ -31,12 +31,12 @@ In the above dataset, the first history is 0 3 6 9 12 15. Because the values inc
 To extrapolate, start by adding a new zero to the end of your list of zeroes; because the zeroes represent differences between the two values above them, this also means there is now a placeholder in every sequence above it:
 
 ```
-0   3   6   9  12  15   B
-  3   3   3   3   3   A
-    0   0   0   0   0
+0   3   6   9  12  15   *B*
+  3   3   3   3   3   *A*
+    0   0   0   0   *0*
 ```
 
-You can then start filling in placeholders from the bottom up. A needs to be the result of increasing 3 (the value to its left) by 0 (the value below it); this means A must be 3:
+You can then start filling in placeholders from the bottom up. **A** needs to be the result of increasing 3 (the value to its left) by 0 (the value below it); this means **A** must be **3**:
 
 ```
 0   3   6   9  12  15   B
