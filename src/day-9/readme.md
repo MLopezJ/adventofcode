@@ -91,4 +91,5 @@ If you find the next value for each history in this example and add them togethe
 Analyze your OASIS report and extrapolate the next value for each history. What is the sum of these extrapolated values?
 
 #### Solution
-// TODO
+What is the sum of these extrapolated values?
+Using input.txt, the answer is 1995001648. 

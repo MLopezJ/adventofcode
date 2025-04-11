@@ -8,3 +8,4 @@
 - Day 5: (not implemented yet)
 - Day 6: [Wait For It](./src/day-6/readme.md)
 - Day 8: [Haunted Wasteland](./src/day-8/readme.md)
+- day 9: [Mirage Maintenance](./src/day-9/readme.md)
