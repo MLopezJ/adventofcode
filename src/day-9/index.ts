@@ -53,7 +53,7 @@ export const differenceAtEachStep = (input: number[]): number[] => {
 				return
 			}
 			const next = array[index + 1] as number
-			const difference = next - value < 0 ? value - next : next - value
+			const difference = next - value
 			return difference
 		})
 		.filter((element) => element !== undefined) as number[]
