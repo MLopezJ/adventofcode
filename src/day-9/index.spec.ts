@@ -14,14 +14,14 @@ void describe('numberPredicted', () => {
 })
 
 void describe('extrapolateBackwards', () => {
-	for (const [c, b, a] of [
+	for (const [a, b, c] of [
 		[0, 2, 2],
 		[2, 0, -2],
 		[-2, 3, 5],
 		[5, 10, 5]
 	] as [number, number, number][]) {
-		it(`should discover value ${a}, that is the value needed when performing X - ${b} = ${c}`, () =>
-			assert.equal(previousValue(c, b), c))
+		it(`should discover value ${c}, that is the value needed when performing X - ${b} = ${a}`, () =>
+			assert.equal(previousValue(a, b), c))
 	}
 })
 
