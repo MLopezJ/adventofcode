@@ -78,6 +78,19 @@ const tokenizeTxt = async (fileName: string): Promise<number[][]> => {
 	return txt.map((element) => fromTextToList(element))
 }
 
+/**
+ * Find previous value of a sequence by appling the following formula:
+ * A - B = C
+ * 
+ * Given values are B and C. A is the value finded.
+ * 
+ * A   B   X   X 
+ *   C   X   X
+ */
+export const previousValue = (b: number, c: number): number => {
+	return 0
+}
+
 
 
 /**

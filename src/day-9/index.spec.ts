@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test'
 import assert from 'node:assert/strict'
-import { differenceAtEachStep, fromTextToList, numberPredicted, sum } from '.'
+import { differenceAtEachStep, fromTextToList, numberPredicted, sum, previousValue } from '.'
 
 void describe('numberPredicted', () => {
 	for (const [input, expectedPrediction] of [
@@ -10,6 +10,18 @@ void describe('numberPredicted', () => {
 	] as [number[], number][]) {
 		it(`should return the number predictd (${expectedPrediction}) by method "predict" with input (${input})`, () =>
 			assert.equal(numberPredicted(input), expectedPrediction))
+	}
+})
+
+void describe('extrapolateBackwards', () => {
+	for (const [c, b, a] of [
+		[0, 2, 2],
+		[2, 0, -2],
+		[-2, 3, 5],
+		[5, 10, 5]
+	] as [number, number, number][]) {
+		it(`should discover value ${a}, that is the value needed when performing X - ${b} = ${c}`, () =>
+			assert.equal(previousValue(c, b), c))
 	}
 })
 
